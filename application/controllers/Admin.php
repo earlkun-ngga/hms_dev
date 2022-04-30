@@ -64,7 +64,14 @@
 			$this->load->view('admin/template/header', $head);
 			$this->load->view('admin/appointment', $body);
 			$this->load->view('admin/template/footer');
+		}
 
+
+		public function test_temp()
+		{
+
+
+			$this->load->view('admin/test_template/1');
 
 		}
 
