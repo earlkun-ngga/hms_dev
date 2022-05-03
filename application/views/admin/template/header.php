@@ -1,9 +1,8 @@
 
-<!DOCTYPE html>
-
+<!DOCTYPE html>	
 <html lang="en">
 	<!--begin::Head-->
-	<head><base href="../../">
+	<head>
 		<meta charset="utf-8" />
 		<title>Modal | Keenthemes</title>
 		<meta name="description" content="Modal examples" />
@@ -20,7 +19,8 @@
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="<?= base_url(); ?>assets/media/logos/favicon.ico" />
-		<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+		<!-- <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script> -->
+		<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -341,7 +341,6 @@
 									<li class="nav-item">
 										<a href="#" class="nav-link <?= ($big == '4') ? 'active' : ''; ?>">
 											<span class="nav-title text-uppercase">ACCOUNTING</span>
-											
 										</a>
 									</li>
 									<!--end::Item-->
