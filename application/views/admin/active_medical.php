@@ -72,6 +72,7 @@
     
                                                         </td>
                                                         <td><center>
+                                                            <a href="#" data-toggle="modal" data-target="#modal_recipe">
                                                               <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect x="0" y="0" width="24" height="24"/>
@@ -85,6 +86,7 @@
         <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
     </g>
 </svg><!--end::Svg Icon--></span></center>
+</a>
                                                         </td>
                                                       
                                                         <td><center>
@@ -170,6 +172,210 @@
 
 
 <!-- MODAL -->
+<div class="modal fade" id="modal_recipe" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Recipe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-3">
+                        
+                        <div class="row">
+                            <div class="mx-1 col card">
+                                <br>
+                                <b>Group</b>
+                                <hr>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="mx-1 col card">
+                                <br>
+                                <b>Category</b>
+                                <hr>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="mx-1 col card">
+                                <br>
+                                <b>Example Recipe</b>
+                                <hr>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-6 card shadow-sm p-3 mb-5 bg-white rounded">
+                        <br>    
+                        <center><h4>Recipe Drugs</h4>
+                           
+                            <hr></center>
+                            <table>
+                                <tr>
+                                    <td><b>Name</b></td>
+                                    <td>Muhammad Erlangga</td>
+                                    <td><b>Birth Date</b></td>
+                                    <td>6 January 2000</td>
+                                </tr>
+                                 <tr>
+                                    <td><b>Phone</b></td>
+                                    <td>021021021</td>
+                                    <td><b>Gender</b></td>
+                                    <td>Male</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"> </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Reason Checking</b></td>
+                                    <td colspan="3"><input style="border-bottom: dotted 2px #c9c9c9; " type="text" class="form-control" placeholder="ex. Headache" /></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td ><b>Diagnostic</b></td>
+                                    <td colspan="3"><input type="text" class="form-control" placeholder="..." /></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <table>
+                                
+                                <?php for($i = 0; $i <= 5; $i++) 
+                                { ?>
+
+                                <tr>
+                                    <td rowspan="2"><font size="+1"><center><?= $i+1; ?></center></font></td>
+                                    <td>
+                                        <center>
+                                        <select class="form-control">
+                                            <option>Abacavir</option>
+                                            <option>Acetazolamide</option>
+                                            <option>Aclidinium</option>
+                                            <option>Adapalene</option>
+                                            <option>Aminofilin</option>
+                                            <option>Amitriptyline</option>
+                                        </select>
+                                        </center>
+                                    </td>
+                                    <td rowspan="2"></td>
+                                    <td>
+                                        <input type="number" style="width: 30%" class="form-control" placeholder="QTY">
+                                    </td>
+                                    <td rowspan="2">
+                                       <center> <a class="btn btn-danger">delete</a></center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <center>
+                                        <input type="text" class="form-control" placeholder="How to Use">
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><br></td>
+                                </tr>
+
+                            <?php } ?>
+
+                                 
+                               
+                               
+                               
+                                 <tr>
+                                    <td rowspan="2"></td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td rowspan="2"></td>
+                                    <td rowspan="2">
+                                       <center> <a class="btn btn-success">Add Item</a></center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td colspan="4"><br></td>
+                                </tr>
+
+                            </table>
+                            <br>
+                           
+                            <br>
+                            <div class="row">
+                            <div class="col-6">
+                                <b>Appointment Date : </b>6 January 2022
+                                <br>
+                                <b>Instruction : </b>
+                                <br>
+                                <textarea class="form-control"></textarea>
+
+                            </div>
+
+                            <div class="col-6">
+                               <center>
+                                   <i>8 Mei 2022</i>
+                                   <br>
+                                   Created
+                                   <br>
+                                   <br>
+                                   <br>
+                                   <br>
+                                   <b>Name of Clinic</b>
+                               </center>
+
+                            </div>
+
+                            </div>
+                    </div>
+
+                    <div class="col-3">
+                        
+                        <div class="row">
+                            <div class="mx-1 col card">
+                                <br>
+                                <b>Disease Progress</b>
+                                <hr>
+                            </div>
+                            <div class="mx-1 col card">
+                                <br>
+                                <b>Sign of Life</b>
+                                <hr>
+                            </div>
+                          
+                        </div>
+                        <br>
+                         <div class="row">
+                            <div class="mx-1 col card">
+                                <br>
+                                <b>Treatment Process</b>
+                                <hr>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="modal_edit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -312,7 +518,6 @@
                                  <tr>
                                     <td rowspan="2"></td>
                                     <td>
-                                        
                                     </td>
                                     <td rowspan="2"></td>
                                     <td rowspan="2">
@@ -326,10 +531,8 @@
                                  <tr>
                                     <td colspan="4"><br></td>
                                 </tr>
-
                             </table>
                             <br>
-                           
                             <br>
                             <div class="row">
                             <div class="col-6">
@@ -338,9 +541,7 @@
                                 <b>Instruction : </b>
                                 <br>
                                 <textarea class="form-control"></textarea>
-
                             </div>
-
                             <div class="col-6">
                                <center>
                                    <i>8 Mei 2022</i>
@@ -363,7 +564,7 @@
                         <div class="row">
                             <div class="mx-1 col card">
                                 <br>
-                                <b>Penyakit</b>
+                                <b>Disease Progression</b>
                                 <hr>
                             </div>
                             <div class="mx-1 col card">

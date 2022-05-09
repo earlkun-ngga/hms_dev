@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Apr 2022 pada 09.19
+-- Waktu pembuatan: 09 Bulan Mei 2022 pada 10.38
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -82,9 +82,33 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `doctor_id`, `doctor_name`, `status`, `experience_year`, `no_handphone`, `last_education`, `birth_date`) VALUES
-(9, 'D220411085227', 'Erlangga Ajie', 0, 26, '021021021', 'SI', '2022-04-13'),
 (16, 'D220412105028', 'Anggi Lesmana', 1, 23, '552255', 'SI', '0000-00-00'),
 (22, 'D220412110813', 'Findri Lumawa', 1, 213, '123213231', 'asddas\'', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `drug`
+--
+
+CREATE TABLE `drug` (
+  `id` int(10) NOT NULL,
+  `drug_id` varchar(64) DEFAULT NULL,
+  `drug_name` varchar(128) DEFAULT NULL,
+  `qty` int(20) DEFAULT NULL,
+  `unit` varchar(64) DEFAULT NULL,
+  `spec` text DEFAULT NULL,
+  `category` text DEFAULT NULL,
+  `price_per_unit` decimal(20,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `drug`
+--
+
+INSERT INTO `drug` (`id`, `drug_id`, `drug_name`, `qty`, `unit`, `spec`, `category`, `price_per_unit`) VALUES
+(3, 'DG220509093244', 'Paramex', 25, 'PCS', 'Obat Pusing', 'Obat Sakit Kepala', '5000.00'),
+(6, 'DG220509094329', 'OBH Combi', 60, 'Bottle', 'Obat Batuk', 'Obat Batuk Hitam', '17000.00');
 
 -- --------------------------------------------------------
 
@@ -204,6 +228,13 @@ ALTER TABLE `doctor`
   ADD UNIQUE KEY `doctor_id` (`doctor_id`);
 
 --
+-- Indeks untuk tabel `drug`
+--
+ALTER TABLE `drug`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `drug_id` (`drug_id`);
+
+--
 -- Indeks untuk tabel `master_checking`
 --
 ALTER TABLE `master_checking`
@@ -248,6 +279,12 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `doctor`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT untuk tabel `drug`
+--
+ALTER TABLE `drug`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_checking`

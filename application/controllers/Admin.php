@@ -19,7 +19,9 @@
 			$this->load->model('Patient_Model');
 			$this->load->model('Appointment_Model');
 			$this->load->model('MedicalRecord_model');
-		}
+			$this->load->model('Drug_Model');
+
+			}
 
 		// Halaman Dashboard
 		public function index() {
@@ -66,6 +68,47 @@
 			$this->load->view('admin/template/footer');
 		}
 
+		public function drugs()
+		{
+			$head['big'] = '3';
+			$data['drugs'] = $this->Drug_Model->get_all_drug();
+			$this->load->view('admin/template/header', $head);
+			$this->load->view('admin/drugs_page', $data);
+			$this->load->view('admin/template/footer');
+		}
+
+		public function proses_input_drug()
+		{
+			if($this->Drug_Model->insert_new_drug($_POST))
+			{
+				echo '<script>window.location.replace("'.base_url().'admin/drugs ");</script>';
+			} else {
+				echo '<script>window.location.replace("'.base_url().'admin/drugs ");</script>';
+			}
+		}
+
+		public function delete_drug_by_id($data)
+		{
+			if($this->Drug_Model->delete_drug_by_id($data))
+			{
+				echo '<script>window.location.replace("'.base_url().'admin/drugs ");</script>';
+			} else {
+				echo '<script>window.location.replace("'.base_url().'admin/drugs ");</script>';
+			}
+		}
+
+		public function update_drug_by_id()
+		{
+			if($this->Drug_Model->update_drug_by_id($_POST))
+			{
+				echo '<script>window.location.replace("'.base_url().'admin/drugs ");</script>';
+			} else {
+				echo '<script>window.location.replace("'.base_url().'admin/drugs ");</script>';
+			}
+
+			// var_dump($_POST);
+		}
+
 
 		public function test_temp()
 		{
@@ -99,6 +142,8 @@
 			$this->load->view('admin/doctor_page', $body);
 			$this->load->view('admin/template/footer');
 		}
+
+
 
 		public function update_doctor_by_id()
 		{
@@ -176,6 +221,8 @@
 				echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
 			}
 		}
+
+
 
 
 
