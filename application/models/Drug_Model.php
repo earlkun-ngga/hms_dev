@@ -49,7 +49,9 @@
 			$this->db->set('category', $data['category']);
 			$this->db->set('unit', $data['unit']);
 
-			$this->db->where('id', $data['id_drug']);
+			$this->db->where('id', $data['id_drug
+
+				']);
 
 			$this->db->update($this->table);
 

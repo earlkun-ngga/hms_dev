@@ -72,7 +72,12 @@
     
                                                         </td>
                                                         <td><center>
-                                                            <a href="#" data-toggle="modal" data-target="#modal_recipe">
+                                                            <a href="#" data-toggle="modal" onclick="popup_recipe(
+                                                                '<?= $da['id_patient']; ?>',
+                                                                '<?= $da['patient_name']; ?>',
+                                                                '<?= $da['phone_number_1']; ?>',
+                                                                '<?= $da['sex']; ?>'
+                                                            )" data-target="#modal_recipe">
                                                               <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect x="0" y="0" width="24" height="24"/>
@@ -217,99 +222,82 @@
                         <center><h4>Recipe Drugs</h4>
                            
                             <hr></center>
-                            <table>
-                                <tr>
-                                    <td><b>Name</b></td>
-                                    <td>Muhammad Erlangga</td>
-                                    <td><b>Birth Date</b></td>
-                                    <td>6 January 2000</td>
-                                </tr>
-                                 <tr>
-                                    <td><b>Phone</b></td>
-                                    <td>021021021</td>
-                                    <td><b>Gender</b></td>
-                                    <td>Male</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4"> </td>
-                                </tr>
-                                <tr>
-                                    <td><b>Reason Checking</b></td>
-                                    <td colspan="3"><input style="border-bottom: dotted 2px #c9c9c9; " type="text" class="form-control" placeholder="ex. Headache" /></td>
+                             <form method="post" action="<?= base_url(); ?>admin/proses_input_recipe">
+                                <input type="hidden" name="id_patient" id="id_pat" />
+                                <input type="hidden" name="id_recipe" value="R<?= date('ymdhis'); ?>" />
+                                <div class="row">
+                                    <div class="col">
+                                        <b>Name</b>
+                                        <div id="rc_name"></div>
+                                    </div>
+                                    <div class="col">
+                                        <b>Birth Date</b>
+                                        <div id="rc_bd"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                    <b>Phone</b>
+                                    <p id="rc_phone"></p>
+                                    </div>
+                                    <div class="col">
+                                    <p><b>Gender</b></p>
+                                    <p></p>
+                                    </div>
+
+                                </div>
+
+
                                     
-                                </tr>
-                                <tr>
-                                    <td ><b>Diagnostic</b></td>
-                                    <td colspan="3"><input type="text" class="form-control" placeholder="..." /></td>
-                                </tr>
-                            </table>
-                            <br>
-                            <br>
-                            <table>
-                                
-                                <?php for($i = 0; $i <= 5; $i++) 
-                                { ?>
-
-                                <tr>
-                                    <td rowspan="2"><font size="+1"><center><?= $i+1; ?></center></font></td>
-                                    <td>
-                                        <center>
-                                        <select class="form-control">
-                                            <option>Abacavir</option>
-                                            <option>Acetazolamide</option>
-                                            <option>Aclidinium</option>
-                                            <option>Adapalene</option>
-                                            <option>Aminofilin</option>
-                                            <option>Amitriptyline</option>
-                                        </select>
-                                        </center>
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td>
-                                        <input type="number" style="width: 30%" class="form-control" placeholder="QTY">
-                                    </td>
-                                    <td rowspan="2">
-                                       <center> <a class="btn btn-danger">delete</a></center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <center>
-                                        <input type="text" class="form-control" placeholder="How to Use">
-                                        </center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-
-                            <?php } ?>
-
-                                 
-                               
-                               
-                               
-                                 <tr>
-                                    <td rowspan="2"></td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td rowspan="2">
-                                       <center> <a class="btn btn-success">Add Item</a></center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-
-                            </table>
-                            <br>
+                                    
+                             
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <b>Reason Checking</b><br>
+                                   <input name="reason_checking" style="border-bottom: dotted 2px #c9c9c9; width: 100%;" type="text" class="form-control" placeholder="ex. Headache" />
+                                   <br>
+                                    <b>Diagnostic</b><br>   
+                                    <input name="diagnostic" style="width: 100%;"  type="text" class="form-control" placeholder="..." />
+                                </div>
+                            </div>
+                             
+                            <hr>
                            
+                            <div id="col_form_drug">
+                                <div class="row mb-2" id="the_row">
+                                   
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <select name="drug_name[]" class="form-control">
+                                                    <?php foreach ($data_drug as $dd) {  ?>
+                                                        <option><?= $dd['drug_name']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                        </div>
+                                        <div class="col-4">
+                                               <input type="num" placeholder="QTY" class="form-control" name="qty_drug[]">
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                             <div class="col">
+                                            <input type="text" class="form-control" name="note_usg[]" placeholder="Note Usage" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <br>
+                                        <center>
+                                        <a href="#" id="removeRow" class="btn btn-danger">Delete</a>
+                                        </center>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <hr>
+                                       <center> <a href="#" onclick="addrowdrugcolumn()" class="btn btn-success">Add Item</a></center>
                             <br>
                             <div class="row">
                             <div class="col-6">
@@ -317,7 +305,7 @@
                                 <br>
                                 <b>Instruction : </b>
                                 <br>
-                                <textarea class="form-control"></textarea>
+                                <textarea name="instruction"  class="form-control"></textarea>
 
                             </div>
 
@@ -369,7 +357,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Save changes</button>
+                <input type="submit" class="btn btn-primary" value="Save">
+            </form>
             </div>
         </div>
     </div>
@@ -623,6 +612,27 @@
 
 <script type="text/javascript">
 
+    
+    function popup_recipe(id, name, phone, sex)
+    {
+
+       
+
+        $('#rc_name').append(name);
+        $('#rc_phone').append(phone);
+        $('#id_pat').val(id);
+
+        console.log(id);
+        console.log(sex);
+
+        $('#rc_name').empty();
+        $('#rc_phone').empty();
+        $('#id_pat').val();
+       
+
+
+    }
+
     function popup_detail(id, doctor_name, patient_name, date, blood_type, checks, diagnosis)
     {
         console.log(id);
@@ -650,6 +660,49 @@
         $('#checks').append(checks);
 
     }
+
+    function addrowdrugcolumn()
+    {
+
+        var col = `
+                    <div id="col_form_drug">
+                                <div class="row mb-2" id="the_row">
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <select name="drug_name[]" class="form-control">
+                                                    <?php foreach ($data_drug as $dd) {  ?>
+                                                        <option><?= $dd['drug_name']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                        </div>
+                                        <div class="col-4">
+                                               <input type="num" placeholder="QTY" class="form-control" name="qty_drug[]">
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                             <div class="col">
+                                            <input type="text" class="form-control" name="note_usg[]" placeholder="Note Usage" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <br>
+                                        <center>
+                                        <a href="#" id="removeRow" class="btn btn-danger">Delete</a>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        $('#col_form_drug').append(col);
+
+    }
+     $(document).on('click', '#removeRow', function () {
+        $(this).closest('#the_row').remove();
+    });
 
    
  

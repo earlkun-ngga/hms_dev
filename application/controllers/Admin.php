@@ -188,6 +188,7 @@
 		{
 			$head['big'] = '3';
 			$body['data_active'] = $this->MedicalRecord_model->get_medical_record_active();
+			$body['data_drug'] = $this->Drug_Model->get_all_drug();
 			$this->load->view('admin/template/header', $head);
 			$this->load->view('admin/active_medical', $body);
 			$this->load->view('admin/template/footer');
@@ -220,6 +221,13 @@
 			} else {
 				echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
 			}
+		}
+
+
+		public function proses_input_recipe()
+		{
+			var_dump($_POST);
+			// echo ($_POST['drug_name'][0]);
 		}
 
 

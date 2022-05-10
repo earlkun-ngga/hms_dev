@@ -26,7 +26,7 @@
 		public function get_all_medical_record()
 		{
 
-			$this->db->select('medical_record.id, patient.patient_name, doctor.doctor_name, patient.blood_type, medical_record.created_date');
+			$this->db->select('medical_record.id, patient.patient_name, patient.phone_number_1, doctor.doctor_name, patient.blood_type, medical_record.created_date');
 			$this->db->join('patient', 'patient.id = medical_record.id_patient');
 			$this->db->join('doctor', 'doctor.id = medical_record.id_doctor');
 			$this->db->join('appointment', 'appointment.id = medical_record.id_appointment');
@@ -36,7 +36,7 @@
 			public function get_medical_record_active()
 		{
 
-			$this->db->select('medical_record.id, patient.patient_name, doctor.doctor_name, patient.blood_type, medical_record.created_date, medical_record.status, medical_record.checks, medical_record.diagnosis');
+			$this->db->select('medical_record.id, medical_record.id_patient, patient.patient_name, patient.phone_number_1, patient.sex, doctor.doctor_name, patient.blood_type, medical_record.created_date, medical_record.status, medical_record.checks, medical_record.diagnosis');
 			$this->db->join('patient', 'patient.id = medical_record.id_patient');
 			$this->db->join('doctor', 'doctor.id = medical_record.id_doctor');
 			$this->db->join('appointment', 'appointment.id = medical_record.id_appointment');
