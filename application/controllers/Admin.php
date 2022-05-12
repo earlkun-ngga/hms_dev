@@ -15,21 +15,25 @@
 			{
 				echo '<script>window.location.replace("'.base_url().'home");</script>';
 			}
+			$this->load->model('MasterRecipe_Model');
+			$this->load->model('ItemMasterRecipe_Model');
 			$this->load->model('Doctor_Model');
 			$this->load->model('Patient_Model');
 			$this->load->model('Appointment_Model');
 			$this->load->model('MedicalRecord_model');
 			$this->load->model('Drug_Model');
+			
 
 			}
 
 		// Halaman Dashboard
 		public function index() {
 
-
 			$head['big'] = '1';
 			$this->load->view('admin/template/header', $head);
+
 			$this->load->view('admin/body');
+			
 			$this->load->view('admin/template/footer');
 			
 		}
@@ -134,6 +138,19 @@
 		}
 
 		//CLINIC
+
+
+		public function list_recipe_patient()
+		{
+			$head['big'] = '3';
+			$data['recipe'] = $this->MasterRecipe_Model->get_all_recipe_patient();
+
+			$this->load->view ('admin/template/header', $head);
+			$this->load->view ('admin/list_recipe_patient', $data);
+			$this->load->view ('admin/template/footer');
+
+		}
+
 		public function doctor_manage_page() {
 			$head['big'] = '3';
 			// $head['little'] = '4';
@@ -226,8 +243,29 @@
 
 		public function proses_input_recipe()
 		{
-			var_dump($_POST);
-			// echo ($_POST['drug_name'][0]);
+			// if($this->MasterRecipe_Model->input_data_master_recipe($_POST))
+			// {
+			// 	echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
+			// } else {
+			// 	echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
+			// }
+
+			$id_master_recipe = $this->MasterRecipe_Model->input_data_master_recipe($_POST);
+
+
+
+
+			for($i = 0; $i < count($_POST['drug_id']); $i++)
+			{
+				$this->ItemMasterRecipe_Model->input_item_master_recipe($_POST['drug_id'][$i], $id_master_recipe, $_POST['qty_drug'][$i],
+				$_POST['note_usg'][$i]
+			);
+
+			}
+
+			
+			echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
+
 		}
 
 

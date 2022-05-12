@@ -10,7 +10,7 @@
 
 			parent::__construct();
 
-			$this->load->model('appointment_Model');
+			$this->load->model('Appointment_Model');
 		}
 
 

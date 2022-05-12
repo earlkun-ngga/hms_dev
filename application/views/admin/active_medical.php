@@ -227,32 +227,39 @@
                                 <input type="hidden" name="id_recipe" value="R<?= date('ymdhis'); ?>" />
                                 <div class="row">
                                     <div class="col">
-                                        <b>Name</b>
-                                        <div id="rc_name"></div>
+                                    <table>
+                                        <tr>
+                                            <td><b>Name : </b></td>
+                                            <td id="rc_name"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Phone : </b></td>
+                                            <td id="rc_phone"></td>
+                                        </tr>
+                                    </table>
                                     </div>
-                                    <div class="col">
-                                        <b>Birth Date</b>
-                                        <div id="rc_bd"></div>
+
+                                     <div class="col">
+                                    <table>
+                                        <tr>
+                                            <td><b>Sex : </b></td>
+                                            <td id="rc_sex"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Birth Date : </b></td>
+                                            <td ></td>
+                                        </tr>
+                                    </table>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                    <b>Phone</b>
-                                    <p id="rc_phone"></p>
-                                    </div>
-                                    <div class="col">
-                                    <p><b>Gender</b></p>
-                                    <p></p>
-                                    </div>
-
-                                </div>
+                                
 
 
                                     
                                     
                              
-                            <div class="row mb-3">
+                            <div class="row mt-3 mb-3">
                                 <div class="col">
                                     <b>Reason Checking</b><br>
                                    <input name="reason_checking" style="border-bottom: dotted 2px #c9c9c9; width: 100%;" type="text" class="form-control" placeholder="ex. Headache" />
@@ -270,20 +277,20 @@
                                     <div class="col-8">
                                         <div class="row">
                                             <div class="col-8">
-                                                <select name="drug_name[]" class="form-control">
+                                                <select name="drug_id[]" class="form-control">
                                                     <?php foreach ($data_drug as $dd) {  ?>
-                                                        <option><?= $dd['drug_name']; ?></option>
+                                                        <option value="<?= $dd['id']; ?>"><?= $dd['id']; ?> | <?= $dd['drug_name']; ?></option>
                                                     <?php } ?>
                                                 </select>
                                         </div>
                                         <div class="col-4">
-                                               <input type="num" placeholder="QTY" class="form-control" name="qty_drug[]">
+                                               <input type="num" required placeholder="QTY" class="form-control" name="qty_drug[]">
                                         </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                              <div class="col">
-                                            <input type="text" class="form-control" name="note_usg[]" placeholder="Note Usage" />
+                                            <input type="text" required class="form-control" name="note_usg[]" placeholder="Note Usage" />
                                         </div>
                                         </div>
                                     </div>
@@ -617,19 +624,31 @@
     {
 
        
-
+        $('#rc_name').empty();
         $('#rc_name').append(name);
+
+        $('#rc_phone').empty();
         $('#rc_phone').append(phone);
+
+        $('#id_pat').val();
         $('#id_pat').val(id);
+
+
+        if(sex == '1')
+        {
+
+        $('#rc_sex').empty();
+        $('#rc_sex').append('Male');
+        } else {
+
+        $('#rc_sex').empty();
+        $('#rc_sex').append('Female');
+        }
 
         console.log(id);
         console.log(sex);
 
-        $('#rc_name').empty();
-        $('#rc_phone').empty();
-        $('#id_pat').val();
-       
-
+     
 
     }
 
@@ -665,25 +684,25 @@
     {
 
         var col = `
-                    <div id="col_form_drug">
-                                <div class="row mb-2" id="the_row">
+                     <div class="row mb-2" id="the_row">
+                                   
                                     <div class="col-8">
                                         <div class="row">
                                             <div class="col-8">
-                                                <select name="drug_name[]" class="form-control">
+                                                <select name="drug_id[]" class="form-control">
                                                     <?php foreach ($data_drug as $dd) {  ?>
-                                                        <option><?= $dd['drug_name']; ?></option>
+                                                        <option value="<?= $dd['id']; ?>"><?= $dd['id']; ?> | <?= $dd['drug_name']; ?></option>
                                                     <?php } ?>
                                                 </select>
                                         </div>
                                         <div class="col-4">
-                                               <input type="num" placeholder="QTY" class="form-control" name="qty_drug[]">
+                                               <input type="num" required placeholder="QTY" class="form-control" name="qty_drug[]">
                                         </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                              <div class="col">
-                                            <input type="text" class="form-control" name="note_usg[]" placeholder="Note Usage" />
+                                            <input type="text" required class="form-control" name="note_usg[]" placeholder="Note Usage" />
                                         </div>
                                         </div>
                                     </div>
@@ -694,7 +713,6 @@
                                         </center>
                                     </div>
                                 </div>
-                            </div>
                         `;
 
                         $('#col_form_drug').append(col);

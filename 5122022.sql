@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Bulan Mei 2022 pada 10.38
+-- Waktu pembuatan: 12 Bulan Mei 2022 pada 10.12
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -58,7 +58,11 @@ INSERT INTO `appointment` (`id`, `id_doctor`, `id_patient`, `appointment_id`, `a
 (39, 22, 1019, 'AP20220421083951', '2022-04-21', '00:00', 1, ''),
 (40, 22, 1019, 'AP20220421084009', '2022-04-21', '3:15', 0, ''),
 (41, 22, 1019, 'AP20220421084013', '2022-04-21', '3:30', 1, ''),
-(42, 22, 1019, 'AP20220421084026', '2022-04-21', '4:00', 1, '');
+(42, 22, 1019, 'AP20220421084026', '2022-04-21', '4:00', 1, ''),
+(43, 22, 1011, 'AP20220510093634', '2022-05-10', '2:45', 1, ''),
+(44, 16, 1014, 'AP20220512052859', '2022-05-12', '00:00', 1, ''),
+(45, 22, 1015, 'AP20220512053201', '2022-05-12', '00:45', 1, ''),
+(46, 22, 1017, 'AP20220512053518', '2022-05-12', '1:15', 1, '');
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,35 @@ CREATE TABLE `drug` (
 
 INSERT INTO `drug` (`id`, `drug_id`, `drug_name`, `qty`, `unit`, `spec`, `category`, `price_per_unit`) VALUES
 (3, 'DG220509093244', 'Paramex', 25, 'PCS', 'Obat Pusing', 'Obat Sakit Kepala', '5000.00'),
-(6, 'DG220509094329', 'OBH Combi', 60, 'Bottle', 'Obat Batuk', 'Obat Batuk Hitam', '17000.00');
+(6, 'DG220509094329', 'OBH Combi', 60, 'Bottle', 'Obat Batuk', 'Obat Batuk Hitam', '17000.00'),
+(7, 'DG220510053136', 'Aminofilin', 100, 'Pcs', 'Drug Hard', 'Drug', '30000.00'),
+(8, 'DG220512090507', 'Oskadon', 70, 'PCS', 'Obat Sakit Kepala', 'Obat Ringan', '10000.00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `item_recipe_drug_patient`
+--
+
+CREATE TABLE `item_recipe_drug_patient` (
+  `id` int(20) NOT NULL,
+  `id_drug` int(10) DEFAULT NULL,
+  `id_master_recipe_drug_patient` int(16) DEFAULT NULL,
+  `drug_qty` int(10) DEFAULT NULL,
+  `note_drug` text DEFAULT NULL,
+  `remark` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `item_recipe_drug_patient`
+--
+
+INSERT INTO `item_recipe_drug_patient` (`id`, `id_drug`, `id_master_recipe_drug_patient`, `drug_qty`, `note_drug`, `remark`) VALUES
+(1, 3, 13, 2, 'Minum', NULL),
+(2, 7, 13, 1, 'Minum', NULL),
+(3, 8, 14, 10, 'Minum', NULL),
+(4, 6, 14, 13, 'Minum Terus', NULL),
+(5, 7, 14, 13, 'Minum Terus', NULL);
 
 -- --------------------------------------------------------
 
@@ -121,6 +153,30 @@ CREATE TABLE `master_checking` (
   `name_check` varchar(64) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `master_recipe_drug_patient`
+--
+
+CREATE TABLE `master_recipe_drug_patient` (
+  `id` int(16) NOT NULL,
+  `recipe_id` varchar(64) DEFAULT NULL,
+  `id_patient` int(10) DEFAULT NULL,
+  `reason_checking` text DEFAULT NULL,
+  `diagnostic` text DEFAULT NULL,
+  `instruction` text DEFAULT NULL,
+  `created_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `master_recipe_drug_patient`
+--
+
+INSERT INTO `master_recipe_drug_patient` (`id`, `recipe_id`, `id_patient`, `reason_checking`, `diagnostic`, `instruction`, `created_date`) VALUES
+(13, 'R220512091403', 1011, 'Saya Pusing', 'Sakit Kepala', 'After Lunch', '2022-05-12'),
+(14, 'R220512091444', 1014, 'Es terosss', 'Batuk', 'Di jaga', '2022-05-12');
 
 -- --------------------------------------------------------
 
@@ -147,7 +203,11 @@ CREATE TABLE `medical_record` (
 INSERT INTO `medical_record` (`id`, `id_doctor`, `id_patient`, `id_appointment`, `medical_record_id`, `diagnosis`, `checks`, `status`, `created_date`) VALUES
 (4, 22, 1019, 39, NULL, 'Pusing', 'Tensi Darah', 2, '2022-04-21'),
 (5, 22, 1019, 41, NULL, 'Perih', 'Cek jantung 35', 2, '2022-04-21'),
-(6, 22, 1019, 42, NULL, NULL, NULL, 0, '2022-04-21');
+(6, 22, 1019, 42, NULL, NULL, NULL, 0, '2022-04-21'),
+(7, 22, 1011, 43, NULL, NULL, NULL, 0, '2022-05-10'),
+(8, 16, 1014, 44, NULL, NULL, NULL, 0, '2022-05-12'),
+(9, 22, 1015, 45, NULL, NULL, NULL, 0, '2022-05-12'),
+(10, 22, 1017, 46, NULL, NULL, NULL, 0, '2022-05-12');
 
 -- --------------------------------------------------------
 
@@ -235,10 +295,26 @@ ALTER TABLE `drug`
   ADD UNIQUE KEY `drug_id` (`drug_id`);
 
 --
+-- Indeks untuk tabel `item_recipe_drug_patient`
+--
+ALTER TABLE `item_recipe_drug_patient`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_drug` (`id_drug`),
+  ADD KEY `id_master_recipe_drug_patient` (`id_master_recipe_drug_patient`);
+
+--
 -- Indeks untuk tabel `master_checking`
 --
 ALTER TABLE `master_checking`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `master_recipe_drug_patient`
+--
+ALTER TABLE `master_recipe_drug_patient`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `recipe_id` (`recipe_id`),
+  ADD KEY `id_patient` (`id_patient`);
 
 --
 -- Indeks untuk tabel `medical_record`
@@ -272,7 +348,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT untuk tabel `doctor`
@@ -284,7 +360,13 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT untuk tabel `drug`
 --
 ALTER TABLE `drug`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `item_recipe_drug_patient`
+--
+ALTER TABLE `item_recipe_drug_patient`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_checking`
@@ -293,10 +375,16 @@ ALTER TABLE `master_checking`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `master_recipe_drug_patient`
+--
+ALTER TABLE `master_recipe_drug_patient`
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT untuk tabel `medical_record`
 --
 ALTER TABLE `medical_record`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `patient`
@@ -320,6 +408,19 @@ ALTER TABLE `user`
 ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `item_recipe_drug_patient`
+--
+ALTER TABLE `item_recipe_drug_patient`
+  ADD CONSTRAINT `item_recipe_drug_patient_ibfk_1` FOREIGN KEY (`id_drug`) REFERENCES `drug` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_recipe_drug_patient_ibfk_2` FOREIGN KEY (`id_master_recipe_drug_patient`) REFERENCES `master_recipe_drug_patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `master_recipe_drug_patient`
+--
+ALTER TABLE `master_recipe_drug_patient`
+  ADD CONSTRAINT `master_recipe_drug_patient_ibfk_1` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `medical_record`

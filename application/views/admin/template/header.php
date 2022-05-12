@@ -655,7 +655,7 @@
 											<div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
 												<!--begin::Actions-->
 												<a href="<?= base_url(); ?>admin/active_medical" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0"><b>Medical Record</b></a>
-												<a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0"><b>Recipe Drug</b></a>
+												<a href="<?= base_url(); ?>admin/list_recipe_patient" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0"><b>Recipe Drug</b></a>
 												<a href="<?= base_url(); ?>admin/done_medical" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0"><b>Done</b></a>
 												<a href="<?= base_url(); ?>admin/doctor_manage_page" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0"><b>Doctor</b></a>
 

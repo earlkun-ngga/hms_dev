@@ -23,7 +23,6 @@
 			$this->db->set('price_per_unit', $data['price']);
 			$this->db->set('category', $data['category']);
 			$this->db->set('unit', $data['unit']);
-
 			$this->db->insert($this->table);
 
 			return $this->db->affected_rows();
