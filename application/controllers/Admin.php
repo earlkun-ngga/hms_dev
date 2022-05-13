@@ -144,11 +144,9 @@
 		{
 			$head['big'] = '3';
 			$data['recipe'] = $this->MasterRecipe_Model->get_all_recipe_patient();
-
 			$this->load->view ('admin/template/header', $head);
 			$this->load->view ('admin/list_recipe_patient', $data);
 			$this->load->view ('admin/template/footer');
-
 		}
 
 		public function doctor_manage_page() {

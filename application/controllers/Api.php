@@ -23,5 +23,10 @@
 
 		}
 
+		public function get_item_recipe_by_id_master_recipe($id)
+		{
+			
+		}
+
 
 	}
