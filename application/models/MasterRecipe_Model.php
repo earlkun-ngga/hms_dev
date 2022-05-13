@@ -24,11 +24,17 @@
 		public function get_all_recipe_patient()
 		{
 
-			$this->db->select('master_recipe_drug_patient.recipe_id, patient.patient_name, patient.phone_number_1, master_recipe_drug_patient.diagnostic,
-				 master_recipe_drug_patient.created_date
+			$this->db->select('
+				master_recipe_drug_patient.recipe_id,
+				master_recipe_drug_patient.reason_checking,
+				master_recipe_drug_patient.instruction,
+			 	patient.patient_name, 
+			 	patient.phone_number_1,
+			 	patient.sex,
+			 	master_recipe_drug_patient.diagnostic,
+				master_recipe_drug_patient.created_date
 				');
 			$this->db->join('patient', 'patient.id = master_recipe_drug_patient.id_patient');
-
 			return $this->db->get($this->table)->result_array();
 
 		}

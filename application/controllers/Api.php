@@ -11,6 +11,7 @@
 			parent::__construct();
 
 			$this->load->model('Appointment_Model');
+			$this->load->model('ItemMasterRecipe_Model');
 		}
 
 
@@ -25,7 +26,7 @@
 
 		public function get_item_recipe_by_id_master_recipe($id)
 		{
-			
+
 		}
 
 

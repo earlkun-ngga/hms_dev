@@ -40,7 +40,17 @@
 														<td></td>
 														<td><?= $rcp['created_date']; ?></td>
 														<td>
-															<a href="#" onclick="detail_master_recipe('<?= $rcp['patient_name']; ?>')"  data-toggle="modal" data-target="#add_form_doctor">
+															<a href="#" onclick="detail_master_recipe(
+															'<?= $rcp['patient_name']; ?>',
+															'<?= $rcp['phone_number_1']; ?>',
+															'<?= $rcp['reason_checking']; ?>',
+															'<?= $rcp['diagnostic']; ?>',
+															'<?= $rcp['instruction']; ?>',
+															'<?= $rcp['created_date']; ?>',
+															'<?= $rcp['recipe_id']; ?>'
+
+
+															)"  data-toggle="modal" data-target="#add_form_doctor">
 															<center>
 													             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 													            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -145,7 +155,7 @@
                 	<div class="col">
                 		<center>
                 			<h4>RECIPE</h4>
-                			CODE : X123123123
+                			<div id="rc_code_recipe"></div>
                 		</center>
                 	</div>
                 </div>
@@ -159,7 +169,7 @@
                 			</tr>
                 			<tr>
                 				<td>Phone : </td>
-                				<td id="rc_phone_patient"></td>
+                				<td id="rc_patient_phone"></td>
                 			</tr>
                 			<tr>
                 				<td>Gender : </td>
@@ -171,11 +181,11 @@
                 		<table>
                 			<tr>
                 				<td>Reason Check : </td>
-                				<td id="rc_rescheck">value</td>
+                				<td id="rc_rescheck"></td>
                 			</tr>
                 			<tr>
                 				<td>Diagnostic : </td>
-                				<td id="rc_diagnostic">value</td>
+                				<td id="rc_diagnostic"></td>
                 			</tr>
                 			
                 		</table>
@@ -183,6 +193,7 @@
                 </div>
                 </div>
                 <br>
+                <div id="drugs_item">
                 <?php for($i = 0; $i < 3; $i++) { ?>
                 <div class="row">
                 	<div class="col-1">
@@ -199,6 +210,7 @@
                 	</div>
                 </div>
             	<?php } ?>
+            	</div>
 
             	<hr>
 
@@ -209,16 +221,14 @@
             			<b>
             				Instruction : 
             			</b>
-            			<p>
-            				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            				tempor incididunt ut labore et dolore magna aliqua. 
+            			<div id="rc_instruction">
+            			</div>
             		</div>
 
 
             		<div class="col">
             		<center>
-	            		<b>1 Mei 2022</b>
-	            		<br>
+	            		<b><div id="rc_created_date"></div></b>
 	            		Doctor
 	            		<br>
 	            		<br>
@@ -276,22 +286,30 @@
 <script type="text/javascript">
 	
 	// function detail_drugs(name_patient, patient_phone, rescheck, diagnostic)
-	function detail_master_recipe(name_patient, patient_phone, rescheck, diagnostic)
+	function detail_master_recipe(name_patient, patient_phone, rescheck, diagnostic, instruction, created_date, code_recipe)
 	{
 
-
+		$('#rc_code_recipe').empty();
+		$('#rc_code_recipe').append(`CODE : ${code_recipe}`);
+		
 		$('#rc_name_patient').empty();
 		$('#rc_name_patient').append(name_patient);
 
 		$('#rc_patient_phone').empty();
 		$('#rc_patient_phone').append(patient_phone);
 
-
 		$('#rc_rescheck').empty();
 		$('#rc_rescheck').append(rescheck);
 
 		$('#rc_diagnostic').empty();
 		$('#rc_diagnostic').append(diagnostic);
+
+		$('#rc_instruction').empty();
+		$('#rc_instruction').append(instruction);
+
+		$('#rc_created_date').empty();
+		$('#rc_created_date').append(created_date);
+
 
 
 	}
