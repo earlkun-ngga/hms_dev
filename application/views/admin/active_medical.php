@@ -417,118 +417,11 @@
                             </table>
                             <br>
                             <br>
-                            <table>
+                            <div id="item_checking_form">
                                 
-
-                                <tr>
-                                    <td rowspan="2"><font size="+1"><center>1</center></font></td>
-                                    <td>
-                                        <center>
-                                        <select class="form-control">
-                                            <option>Blood Test</option>
-                                            <option>Urine Test</option>
-                                            <option>EKG</option>
-                                            <option>Ultrasonografi (USG)</option>
-                                            <option>CT Scan</option>
-                                            <option>MRI</option>
-                                        </select>
-                                        </center>
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td rowspan="2">
-                                       <center> <a class="btn btn-danger">delete</a></center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <center>
-                                        <input type="text" class="form-control" placeholder="Note">
-                                        </center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-                                 <tr>
-                                    <td rowspan="2"><font size="+1"><center>2</center></font></td>
-                                    <td>
-                                        <center>
-                                        <select class="form-control">
-                                            <option>Blood Test</option>
-                                            <option>Urine Test</option>
-                                            <option>EKG</option>
-                                            <option>Ultrasonografi (USG)</option>
-                                            <option>CT Scan</option>
-                                            <option>MRI</option>
-                                        </select>
-                                        </center>
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td rowspan="2">
-                                       <center> <a class="btn btn-danger">delete</a></center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <center>
-                                        <input type="text" class="form-control" placeholder="Note">
-                                        </center>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-                                 <tr>
-                                    <td rowspan="2"><font size="+1"><center>3</center></font></td>
-                                    <td>
-                                        <center>
-                                        <select class="form-control">
-                                            <option>Blood Test</option>
-                                            <option>Urine Test</option>
-                                            <option>EKG</option>
-                                            <option>Ultrasonografi (USG)</option>
-                                            <option>CT Scan</option>
-                                            <option>MRI</option>
-                                        </select>
-                                        </center>
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td rowspan="2">
-                                       <center> <a class="btn btn-danger">delete</a></center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <center>
-                                        <input type="text" class="form-control" placeholder="Note">
-                                        </center>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-
-                                   <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-                                 <tr>
-                                    <td rowspan="2"></td>
-                                    <td>
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    <td rowspan="2">
-                                       <center> <a class="btn btn-success">Add Item</a></center>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td colspan="4"><br></td>
-                                </tr>
-                            </table>
+                            </div>
                             <br>
+                            <center> <a href="#" onclick="addrowcheckingcolumn()" class="btn btn-success">Add Item</a></center>
                             <br>
                             <div class="row">
                             <div class="col-6">
@@ -718,6 +611,51 @@
                         $('#col_form_drug').append(col);
 
     }
+
+
+     function addrowcheckingcolumn()
+    {
+
+        var col = `
+                     <div class="row mb-2" id="the_row">
+                                   
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <select name="checking_id[]" class="form-control">
+                                                    <?php foreach ($data_checking as $dc) {  ?>
+                                                        <option value="<?= $dc['id']; ?>"><?= $dc['name_checking']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                        </div>
+                                        <div class="col-4">
+                                               <input type="num" required placeholder="QTY" class="form-control" name="qty_drug[]">
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                             <div class="col">
+                                            <input type="text" required class="form-control" name="note_usg[]" placeholder="Note Usage" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <br>
+                                        <center>
+                                        <a href="#" id="removeRow" class="btn btn-danger">Delete</a>
+                                        </center>
+                                    </div>
+                                </div>
+                        `;
+
+                        $('#item_checking_form').append(col);
+
+    }
+
+
+
+
+
      $(document).on('click', '#removeRow', function () {
         $(this).closest('#the_row').remove();
     });

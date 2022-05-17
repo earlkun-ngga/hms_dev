@@ -26,7 +26,7 @@
 
 		public function get_item_recipe_by_id_master_recipe($id)
 		{
-
+			echo json_encode($this->ItemMasterRecipe_Model->get_item_recipe_by_id_master_recipe($id));
 		}
 
 

@@ -25,6 +25,7 @@
 		{
 
 			$this->db->select('
+				master_recipe_drug_patient.id,
 				master_recipe_drug_patient.recipe_id,
 				master_recipe_drug_patient.reason_checking,
 				master_recipe_drug_patient.instruction,

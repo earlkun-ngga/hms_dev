@@ -22,6 +22,7 @@
 			$this->load->model('Appointment_Model');
 			$this->load->model('MedicalRecord_model');
 			$this->load->model('Drug_Model');
+			$this->load->model('Checking_Model');
 			
 
 			}
@@ -204,6 +205,7 @@
 			$head['big'] = '3';
 			$body['data_active'] = $this->MedicalRecord_model->get_medical_record_active();
 			$body['data_drug'] = $this->Drug_Model->get_all_drug();
+			$body['data_checking'] = $this->Checking_Model->get_all_checking();
 			$this->load->view('admin/template/header', $head);
 			$this->load->view('admin/active_medical', $body);
 			$this->load->view('admin/template/footer');

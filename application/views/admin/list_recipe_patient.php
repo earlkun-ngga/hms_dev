@@ -47,7 +47,8 @@
 															'<?= $rcp['diagnostic']; ?>',
 															'<?= $rcp['instruction']; ?>',
 															'<?= $rcp['created_date']; ?>',
-															'<?= $rcp['recipe_id']; ?>'
+															'<?= $rcp['recipe_id']; ?>',
+															'<?= $rcp['id']; ?>'
 
 
 															)"  data-toggle="modal" data-target="#add_form_doctor">
@@ -194,22 +195,7 @@
                 </div>
                 <br>
                 <div id="drugs_item">
-                <?php for($i = 0; $i < 3; $i++) { ?>
-                <div class="row">
-                	<div class="col-1">
-                		<center><h3><?= $i+1; ?></h3></center>
-                	</div>
-                	<div class="col-10">
-                		<b>PARAMEX</b>
-                		<br>
-                		"Di minum tiap hari tanpa terkecuali !!!!"
-                		<hr>
-                	</div>
-                	<div class="col-1 pt-2 px-1">
-                		<center>3 Pcs</center>
-                	</div>
-                </div>
-            	<?php } ?>
+                
             	</div>
 
             	<hr>
@@ -286,8 +272,12 @@
 <script type="text/javascript">
 	
 	// function detail_drugs(name_patient, patient_phone, rescheck, diagnostic)
-	function detail_master_recipe(name_patient, patient_phone, rescheck, diagnostic, instruction, created_date, code_recipe)
+	function detail_master_recipe(name_patient, patient_phone, rescheck, diagnostic, instruction, created_date, code_recipe, id_master_recipe)
 	{
+
+		console.log(`ID Master Recipe : ${id_master_recipe}`);
+
+		get_item(id_master_recipe);
 
 		$('#rc_code_recipe').empty();
 		$('#rc_code_recipe').append(`CODE : ${code_recipe}`);
@@ -313,7 +303,51 @@
 
 
 	}
-	
 
+
+function get_item(id)
+{
+
+
+$.ajax({
+    type: 'GET',
+    url: `http://localhost/hms_dev/Api/get_item_recipe_by_id_master_recipe/${id}`,
+    success: function(data) {
+      		
+      		var data_real = JSON.parse(data);
+
+      		// console.log(data_real);
+
+      		for(var i = 0; i < data_real.length; i++)
+      		{
+      			var content = `<div class="row">
+                	<div class="col-1">
+                		<center><h3>${i+1}</h3></center>
+                	</div>
+                	<div class="col-10">
+                		<b>${data_real[i]['drug_name']}</b>
+                		<br>
+                		"${data_real[i]['note_drug']}"
+                		<hr>
+                	</div>
+                	<div class="col-1 pt-2 px-1">
+                		<center>${data_real[i]['drug_qty']} Pcs</center>
+                	</div>
+                </div>`
+
+                $('#drugs_item').append(content);
+
+      		}
+
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("some error");
+    }
+});
+
+
+$('#drugs_item').empty();
+
+}
 
 </script>
