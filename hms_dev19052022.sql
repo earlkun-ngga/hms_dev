@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Bulan Mei 2022 pada 11.55
+-- Waktu pembuatan: 19 Bulan Mei 2022 pada 11.48
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -43,26 +43,9 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`id`, `id_doctor`, `id_patient`, `appointment_id`, `appointment_date`, `appointment_time`, `status`, `note`) VALUES
-(27, 22, 1019, 'AP20220418043148', '2022-04-18', '00:30', 0, ''),
-(28, 22, 1019, 'AP20220418043248', '2022-04-18', '4:30', 0, ''),
-(29, 22, 1019, 'AP20220418045912', '2022-04-18', '4:00', 0, ''),
-(30, 22, 1015, 'AP20220418045918', '2022-04-18', '20:30', 0, ''),
-(31, 22, 1019, 'AP20220418050055', '2022-04-19', '4:30', 1, ''),
-(32, 22, 1019, 'AP20220418050132', '2022-04-19', '00:00', 1, ''),
-(33, 22, 1019, 'AP20220418050137', '2022-04-21', '22:00', 1, ''),
-(34, 22, 1019, 'AP20220418050147', '2022-04-27', '4:45', 0, ''),
-(35, 22, 1019, 'AP20220418050218', '2022-04-28', '4:30', 0, ''),
-(36, 22, 1019, 'AP20220418050224', '2022-04-29', '20:30', 0, ''),
-(37, 22, 1019, 'AP20220419103733', '2022-04-19', '3:30', 0, ''),
-(38, 22, 1019, 'AP20220419103819', '2022-04-19', '00:00', 1, ''),
-(39, 22, 1019, 'AP20220421083951', '2022-04-21', '00:00', 1, ''),
-(40, 22, 1019, 'AP20220421084009', '2022-04-21', '3:15', 0, ''),
-(41, 22, 1019, 'AP20220421084013', '2022-04-21', '3:30', 1, ''),
-(42, 22, 1019, 'AP20220421084026', '2022-04-21', '4:00', 1, ''),
-(43, 22, 1011, 'AP20220510093634', '2022-05-10', '2:45', 1, ''),
-(44, 16, 1014, 'AP20220512052859', '2022-05-12', '00:00', 1, ''),
-(45, 22, 1015, 'AP20220512053201', '2022-05-12', '00:45', 1, ''),
-(46, 22, 1017, 'AP20220512053518', '2022-05-12', '1:15', 1, '');
+(47, 22, 1011, 'AP20220519055140', '2022-05-19', '14:00', 1, 'Sakit Parah Bgt'),
+(48, 22, 1010, 'AP20220519094435', '2022-05-19', '4:30', 1, ''),
+(49, 22, 1019, 'AP20220519094732', '2022-05-19', '00:45', 0, '');
 
 -- --------------------------------------------------------
 
@@ -143,6 +126,32 @@ INSERT INTO `drug` (`id`, `drug_id`, `drug_name`, `qty`, `unit`, `spec`, `catego
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `item_checking_sheet_patient`
+--
+
+CREATE TABLE `item_checking_sheet_patient` (
+  `id` int(100) NOT NULL,
+  `id_master_checking_sheet_patient` int(30) DEFAULT NULL,
+  `id_checking` int(12) DEFAULT NULL,
+  `checking_note` text DEFAULT NULL,
+  `checking_qty` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `item_checking_sheet_patient`
+--
+
+INSERT INTO `item_checking_sheet_patient` (`id`, `id_master_checking_sheet_patient`, `id_checking`, `checking_note`, `checking_qty`) VALUES
+(1, 4, 5, 'check bagian kepala', 1),
+(2, 4, 6, 'check bagian tulang kepala', 1),
+(3, 5, 1, 'Test Darah', 3),
+(4, 5, 4, 'Usg', 2),
+(5, 5, 3, 'EKG Test Routine', 3),
+(6, 5, 6, 'MRI Test', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `item_recipe_drug_patient`
 --
 
@@ -165,19 +174,35 @@ INSERT INTO `item_recipe_drug_patient` (`id`, `id_drug`, `id_master_recipe_drug_
 (3, 8, 14, 10, 'Minum', NULL),
 (4, 6, 14, 13, 'Minum Terus', NULL),
 (5, 7, 14, 13, 'Minum Terus', NULL),
-(6, 3, 15, 15, 'Di Minum 3 kali sehari', NULL);
+(6, 3, 15, 15, 'Di Minum 3 kali sehari', NULL),
+(7, 7, 16, 23, 'Oke', NULL),
+(8, 7, 16, 23, 'Oke', NULL),
+(9, 7, 16, 23, 'Oke', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_checking`
+-- Struktur dari tabel `master_checking_sheet_patient`
 --
 
-CREATE TABLE `master_checking` (
-  `id` int(2) NOT NULL,
-  `name_check` varchar(64) NOT NULL,
-  `description` text NOT NULL
+CREATE TABLE `master_checking_sheet_patient` (
+  `id` int(30) NOT NULL,
+  `cs_id` varchar(128) DEFAULT NULL,
+  `id_patient` int(10) DEFAULT NULL,
+  `id_medical_record` int(200) DEFAULT NULL,
+  `diagnostic` text DEFAULT NULL,
+  `instruction` text DEFAULT NULL,
+  `place_test` text DEFAULT NULL,
+  `created_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `master_checking_sheet_patient`
+--
+
+INSERT INTO `master_checking_sheet_patient` (`id`, `cs_id`, `id_patient`, `id_medical_record`, `diagnostic`, `instruction`, `place_test`, `created_date`) VALUES
+(4, 'CLS220519090335', 1011, 11, 'Sakit Kepala', 'Sedang Pengecekan', 'Rumah Sakit', '2022-05-19'),
+(5, 'CLS220519094549', 1010, 12, 'Kanker', 'Must be check now !', 'Depok', '2022-05-19');
 
 -- --------------------------------------------------------
 
@@ -202,7 +227,8 @@ CREATE TABLE `master_recipe_drug_patient` (
 INSERT INTO `master_recipe_drug_patient` (`id`, `recipe_id`, `id_patient`, `reason_checking`, `diagnostic`, `instruction`, `created_date`) VALUES
 (13, 'R220512091403', 1011, 'Saya Pusing', 'Sakit Kepala', 'After Lunch', '2022-05-12'),
 (14, 'R220512091444', 1014, 'Es terosss', 'Batuk', 'Di jaga', '2022-05-12'),
-(15, 'R220517102102', 1019, 'Pusing 7 keliling', 'Migrain', 'Di Minum 3 kali sehari', '2022-05-17');
+(15, 'R220517102102', 1019, 'Pusing 7 keliling', 'Migrain', 'Di Minum 3 kali sehari', '2022-05-17'),
+(16, 'R220518060229', 1015, 'HeadAche', 'Kronis Head', 'baik baik yaaa', '2022-05-18');
 
 -- --------------------------------------------------------
 
@@ -227,13 +253,8 @@ CREATE TABLE `medical_record` (
 --
 
 INSERT INTO `medical_record` (`id`, `id_doctor`, `id_patient`, `id_appointment`, `medical_record_id`, `diagnosis`, `checks`, `status`, `created_date`) VALUES
-(4, 22, 1019, 39, NULL, 'Pusing', 'Tensi Darah', 2, '2022-04-21'),
-(5, 22, 1019, 41, NULL, 'Perih', 'Cek jantung 35', 2, '2022-04-21'),
-(6, 22, 1019, 42, NULL, NULL, NULL, 0, '2022-04-21'),
-(7, 22, 1011, 43, NULL, NULL, NULL, 0, '2022-05-10'),
-(8, 16, 1014, 44, NULL, NULL, NULL, 0, '2022-05-12'),
-(9, 22, 1015, 45, NULL, NULL, NULL, 0, '2022-05-12'),
-(10, 22, 1017, 46, NULL, NULL, NULL, 0, '2022-05-12');
+(11, 22, 1011, 47, NULL, NULL, NULL, 0, '2022-05-19'),
+(12, 22, 1010, 48, NULL, NULL, NULL, 0, '2022-05-19');
 
 -- --------------------------------------------------------
 
@@ -327,6 +348,14 @@ ALTER TABLE `drug`
   ADD UNIQUE KEY `drug_id` (`drug_id`);
 
 --
+-- Indeks untuk tabel `item_checking_sheet_patient`
+--
+ALTER TABLE `item_checking_sheet_patient`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_master_checking_sheet_patient` (`id_master_checking_sheet_patient`),
+  ADD KEY `id_checking` (`id_checking`);
+
+--
 -- Indeks untuk tabel `item_recipe_drug_patient`
 --
 ALTER TABLE `item_recipe_drug_patient`
@@ -335,10 +364,12 @@ ALTER TABLE `item_recipe_drug_patient`
   ADD KEY `id_master_recipe_drug_patient` (`id_master_recipe_drug_patient`);
 
 --
--- Indeks untuk tabel `master_checking`
+-- Indeks untuk tabel `master_checking_sheet_patient`
 --
-ALTER TABLE `master_checking`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `master_checking_sheet_patient`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_patient` (`id_patient`),
+  ADD KEY `id_medical_record` (`id_medical_record`);
 
 --
 -- Indeks untuk tabel `master_recipe_drug_patient`
@@ -380,7 +411,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `checking`
@@ -401,28 +432,34 @@ ALTER TABLE `drug`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT untuk tabel `item_checking_sheet_patient`
+--
+ALTER TABLE `item_checking_sheet_patient`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT untuk tabel `item_recipe_drug_patient`
 --
 ALTER TABLE `item_recipe_drug_patient`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `master_checking`
+-- AUTO_INCREMENT untuk tabel `master_checking_sheet_patient`
 --
-ALTER TABLE `master_checking`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `master_checking_sheet_patient`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_recipe_drug_patient`
 --
 ALTER TABLE `master_recipe_drug_patient`
-  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `medical_record`
 --
 ALTER TABLE `medical_record`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `patient`
@@ -448,11 +485,26 @@ ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `item_checking_sheet_patient`
+--
+ALTER TABLE `item_checking_sheet_patient`
+  ADD CONSTRAINT `item_checking_sheet_patient_ibfk_1` FOREIGN KEY (`id_master_checking_sheet_patient`) REFERENCES `master_checking_sheet_patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_checking_sheet_patient_ibfk_2` FOREIGN KEY (`id_checking`) REFERENCES `checking` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `item_recipe_drug_patient`
 --
 ALTER TABLE `item_recipe_drug_patient`
   ADD CONSTRAINT `item_recipe_drug_patient_ibfk_1` FOREIGN KEY (`id_drug`) REFERENCES `drug` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `item_recipe_drug_patient_ibfk_2` FOREIGN KEY (`id_master_recipe_drug_patient`) REFERENCES `master_recipe_drug_patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `master_checking_sheet_patient`
+--
+ALTER TABLE `master_checking_sheet_patient`
+  ADD CONSTRAINT `master_checking_sheet_patient_ibfk_1` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `master_checking_sheet_patient_ibfk_2` FOREIGN KEY (`id_medical_record`) REFERENCES `medical_record` (`id`),
+  ADD CONSTRAINT `master_checking_sheet_patient_ibfk_3` FOREIGN KEY (`id_medical_record`) REFERENCES `medical_record` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `master_recipe_drug_patient`

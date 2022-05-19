@@ -23,6 +23,8 @@
 			$this->load->model('MedicalRecord_model');
 			$this->load->model('Drug_Model');
 			$this->load->model('Checking_Model');
+			$this->load->model('MasterCheckingSheet_Model');
+			$this->load->model('ItemMasterCheckingSheet_Model');
 			
 
 			}
@@ -240,15 +242,25 @@
 			}
 		}
 
+		public function proses_input_checking_sheet_patient()
+		{
+
+			$id_master_checking = $this->MasterCheckingSheet_Model->insert_new_master_checking_sheet_patient($_POST);
+
+		
+			for($i = 0; $i < count($_POST['checking_id']); $i++)
+			{
+				$this->ItemMasterCheckingSheet_Model->insert_item_checking($_POST['checking_id'][$i], $id_master_checking, $_POST['checking_qty'][$i], $_POST['checking_note'][$i]);
+			}
+
+			echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>'; 
+			
+
+		}
 
 		public function proses_input_recipe()
 		{
-			// if($this->MasterRecipe_Model->input_data_master_recipe($_POST))
-			// {
-			// 	echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
-			// } else {
-			// 	echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
-			// }
+			
 
 			$id_master_recipe = $this->MasterRecipe_Model->input_data_master_recipe($_POST);
 

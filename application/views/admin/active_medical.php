@@ -43,20 +43,23 @@
                                                         <td><?= $da['doctor_name']; ?></td>
                                                         <td>
                                                                 <center>
+                                                                    <a href="#" onclick="detail_cls('<?= $da['id']; ?>')" data-target="#detail_cls" data-toggle="modal">
                                                                         <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <rect x="0" y="0" width="24" height="24"/>
-                <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
-                <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
-                <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
-                <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
-                <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
-                <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
-                <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
-                <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
-            </g>
-        </svg><!--end::Svg Icon--></span>
-    </center>
+                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                            <rect x="0" y="0" width="24" height="24"/>
+                                                                            <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                                            <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                                            <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                                                                            <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+                                                                            <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                                                                            <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+                                                                            <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                                                                            <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                                                                        </g>
+                                                                    </svg><!--end::Svg Icon--></span>
+
+                                                        </a>
+                                                        </center>
 
                                                         </td>
 
@@ -122,7 +125,15 @@
 
                                                         <td><center>
 
-                                                            <a href="#"  data-toggle="modal" data-target="#modal_edit">
+                                                            <a href="#" onclick="popup_edit_cls(
+
+                                                                '<?= $da['id_patient']; ?>',
+                                                                '<?= $da['patient_name']; ?>',
+                                                                '<?= $da['phone_number_1']; ?>',
+                                                                '<?= $da['sex']; ?>',
+                                                                '<?= $da['id']; ?>'
+
+                                                            )" data-toggle="modal" data-target="#modal_edit">
                                                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Design\Edit.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                                 <rect x="0" y="0" width="24" height="24"/>
@@ -151,7 +162,7 @@
                                                         </g>
                                                 </svg><!--end::Svg Icon--></span>
                                             
-                                            </center>
+                                                </center>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>
@@ -371,7 +382,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="modal_edit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -387,36 +397,40 @@
                     <div class="col-6 card shadow-sm p-3 mb-5 bg-white rounded">
                         <br>    
                         <center><h4>Checking Paper Patient</h4>
-                            Code : AB012101212
                             <hr></center>
+
                             <table>
+                                
                                 <tr>
                                     <td><b>Name</b></td>
-                                    <td>Muhammad Erlangga</td>
-                                    <td><b>Birth Date</b></td>
-                                    <td>6 January 2000</td>
+                                    <td id="cls_name"></td>
+                                    <td><b>Phone</b></td>
+                                    <td id="cls_phone"></td>
                                 </tr>
                                  <tr>
-                                    <td><b>Phone</b></td>
-                                    <td>021021021</td>
-                                    <td><b>Gender</b></td>
-                                    <td>Male</td>
+                                    <td><b>Sex</b></td>
+                                    <td id="cls_sex"></td>
+                                    <td><b>Birth Date</b></td>
+                                    <td id="cls_birthdate"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="4"> </td>
                                 </tr>
-                                <tr>
-                                    <td><b>Diagnostic</b></td>
-                                    <td colspan="3"><input style="border-bottom: dotted 2px #c9c9c9; " type="text" class="form-control" placeholder="ex. Headache" /></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td ><b>Place Test</b></td>
-                                    <td colspan="3"><input type="text" class="form-control" placeholder="..." /></td>
-                                </tr>
                             </table>
-                            <br>
-                            <br>
+                            
+                            
+                            <form method="post" action="<?= base_url(); ?>admin/proses_input_checking_sheet_patient">
+                                <input type="hidden" name="id_patient"  id="cls_id_pat" value="" />
+                                <input type="hidden" name="id_medrec" id="cls_id_medrec" value="" />
+                                <input type="hidden" name="check_sheet_id" value="CLS<?= date('ymdhis'); ?>" />
+
+
+
+                            <b>Diagnostic</b><br>
+                            <input style="border-bottom: dotted 2px #c9c9c9; " name="diagnostic" type="text" class="form-control" placeholder="ex. Headache" />
+                            <b>Place Test</b><br>
+                            <input type="text" name="place_test" class="form-control" placeholder="..." /><br>
+                             
                             <div id="item_checking_form">
                                 
                             </div>
@@ -429,7 +443,7 @@
                                 <br>
                                 <b>Instruction : </b>
                                 <br>
-                                <textarea class="form-control"></textarea>
+                                <textarea name="instruction" class="form-control"></textarea>
                             </div>
                             <div class="col-6">
                                <center>
@@ -485,14 +499,86 @@
                                 <hr>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Save changes</button>
+                <input type="submit" class="btn btn-primary font-weight-bold" value="Save" />
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detail_cls" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">DETAIL CHECKING SHEET</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <center>
+                            <h4>CHECKING SHEET</h4>
+                            <div id="dcls_code"></div>
+                        </center>
+                    </div>
+                </div>
+                <hr>
+                <div class="row" id="header_detail_cls">
+                    
+                </div>
+                </div>
+                <br>
+                <div id="checking_item">
+                    
+
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <b>
+                            Instruction : 
+                        </b>
+                        <div id="dcls_instruction">
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                    <center>
+                        <b><div id="dcls_created_date"></div></b>
+                        Doctor
+                        <br>
+                        <br>
+                        <br>
+                        <b>
+                            Clinic
+                        </b>
+                    </center>
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <br>
+               
+
+
+               <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">PRINT</button>
+              
+      
             </div>
         </div>
     </div>
@@ -511,6 +597,47 @@
 
 
 <script type="text/javascript">
+
+
+    function popup_edit_cls(id, name, phone, sex, id_medrec)
+    {
+
+       
+        $('#cls_name').empty();
+        $('#cls_name').append(name);
+
+        $('#cls_phone').empty();
+        $('#cls_phone').append(phone);
+
+        $('#cls_id_pat').val();
+        $('#cls_id_pat').val(id);
+
+        
+
+
+        $('#cls_id_medrec').val();
+        $('#cls_id_medrec').val(id_medrec);
+
+
+        if(sex == '1')
+        {
+
+        $('#cls_sex').empty();
+        $('#cls_sex').append('Male');
+        } else {
+
+        $('#cls_sex').empty();
+        $('#cls_sex').append('Female');
+        }
+
+
+
+
+   
+
+     
+
+    }
 
     
     function popup_recipe(id, name, phone, sex)
@@ -552,25 +679,18 @@
         console.log(patient_name);
 
         $('#id_medrec').val(id);
-
         $('#doct_name').empty();
         $('#doct_name').val(doctor_name);
-
         $('#pat_name').empty();
         $('#pat_name').val(patient_name);
-
         $('#b_type').empty();
         $('#b_type').val(blood_type);
-
         $('#c_date').empty();
         $('#c_date').append(date);
-        
         $('#diagnosis').empty();
         $('#diagnosis').append(diagnosis);
-        
         $('#checks').empty();
         $('#checks').append(checks);
-
     }
 
     function addrowdrugcolumn()
@@ -618,34 +738,39 @@
 
         var col = `
                      <div class="row mb-2" id="the_row">
-                                   
-                                    <div class="col-8">
+                                   <div class="col-1"></div>
+                                    <div class="col-10">
                                         <div class="row">
                                             <div class="col-8">
+                                            <div class="row">
+                                            <div class="col">
                                                 <select name="checking_id[]" class="form-control">
                                                     <?php foreach ($data_checking as $dc) {  ?>
                                                         <option value="<?= $dc['id']; ?>"><?= $dc['name_checking']; ?></option>
                                                     <?php } ?>
                                                 </select>
+                                                </div>
+                                                </div>
+                                                <div class="mt-1 row">
+                                                <div class="col">
+                                                    <input type="text" name="checking_note[]" class="form-control" placeholder="Note Checking" />
+                                                </div>
+                                                </div>
                                         </div>
-                                        <div class="col-4">
-                                               <input type="num" required placeholder="QTY" class="form-control" name="qty_drug[]">
+                                        <div class="col-3">
+                                               <input type="number" required placeholder="QTY" class="form-control" name="checking_qty[]">
                                         </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                             <div class="col">
-                                            <input type="text" required class="form-control" name="note_usg[]" placeholder="Note Usage" />
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <br>
-                                        <center>
-                                        <a href="#" id="removeRow" class="btn btn-danger">Delete</a>
+                                        <div class="col-1">
+                                                 <center>
+                                        <a href="#" id="removeRow" class="btn btn-danger">Del.</a>
                                         </center>
+                                        </div>  
+                                        </div>
+                                       
                                     </div>
+                                  
                                 </div>
+                                <div class="col-1"></div>
                         `;
 
                         $('#item_checking_form').append(col);
@@ -653,13 +778,119 @@
     }
 
 
+    function detail_cls(id)
+    {
+        //set to default empty
+        $('#header_detail_cls').empty();
+        $('#dcls_code').empty();
+        $('#dcls_instruction').empty();
+        $('#checking_item').empty();
+
+        $.ajax({
+
+            type: 'GET',
+            url: `<?= base_url(); ?>Api/get_master_cls_patient_by_id_medical_record/${id}`,
+            success: function(data)
+            {
 
 
+                  var data_hasil = JSON.parse(data);
+
+                  if(data_hasil['sex'] == '1')
+                  {
+                    var gender = 'Male';
+                  } else {
+                    var gender = 'Female';
+                  }
+                     var col = `<div class="col">
+                        <table>
+                            <tr>
+                                <td>Name : </td>
+                                <td id="dcls_name_patient">${data_hasil['patient_name']}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone : </td>
+                                <td id="dcls_phone_patient">${data_hasil['phone_number_1']}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender : </td>
+                                <td id="dcls_sex_patient">${(data_hasil['sex'] == '1') ? 'Male' :'Female'}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <table>
+                            <tr>
+                                <td>Place Test : </td>
+                                <td id="dcls_place_test">${data_hasil['place_test']}</td>
+                            </tr>
+                            <tr>
+                                <td>Diagnostic : </td>
+                                <td id="dcls_diagnostic">${data_hasil['diagnostic']}</td>
+                            </tr>
+                        </table>
+                    </div>`;
+                    $('#header_detail_cls').append(col);
+                    $('#dcls_code').append(`#${data_hasil['cs_id']}`);
+                    $('#dcls_instruction').append(data_hasil['instruction']);
+
+
+
+
+                    $.ajax({
+                        type: 'GET',
+                        url: `<?= base_url(); ?>Api/get_item_checking_sheet_patient_by_id_master_checking_sheet/${data_hasil['id']}`,
+                        success: function(data2)
+                        {
+
+
+                            var data_hasil_2 = JSON.parse(data2);
+
+                            console.log(data_hasil_2.length)
+                            console.log(data_hasil_2);
+
+                            for(var i = 0; i < data_hasil_2.length; i++)
+                            {
+
+
+                            var col2 =    `<div class="row">
+                                    <div class="col-2"><h4><center>1</center></h4></div>
+                                    <div class="col-8">${data_hasil_2[i]['name_checking']}</div>
+                                    <div class="col-2"><h5>${data_hasil_2[i]['checking_qty']} QTY</h5></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2"></div>
+                                    <div class="col-8">Note : ${data_hasil_2[i]['checking_note']}</div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"><hr></div>
+                            </div>`;
+
+
+                        $('#checking_item').append(col2);
+                        }
+
+
+
+                        }
+                    })
+
+
+
+                 
+
+
+            }
+        })
+   
+    }
 
      $(document).on('click', '#removeRow', function () {
         $(this).closest('#the_row').remove();
     });
 
-   
- 
 </script>
+
+
+                        

@@ -146,7 +146,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ADD DATA DOCTOR</h5>
+                <h5 class="modal-title" id="exampleModalLabel">DETAIL RECIPE</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -311,7 +311,7 @@ function get_item(id)
 
 $.ajax({
     type: 'GET',
-    url: `http://localhost/hms_dev/Api/get_item_recipe_by_id_master_recipe/${id}`,
+    url: `<?=base_url();?>/Api/get_item_recipe_by_id_master_recipe/${id}`,
     success: function(data) {
       		
       		var data_real = JSON.parse(data);

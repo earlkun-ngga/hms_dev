@@ -157,4 +157,15 @@
 						<!--begin::Content Wrapper-->
 					</div>
 					<!--end::Container-->
-					
+
+
+<script>
+	
+
+	$.ajax({
+		method: 'GET',
+		url `<?= base_url(); ?>Api/`
+
+	})
+
+</script>
