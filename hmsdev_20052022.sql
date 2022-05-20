@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Bulan Mei 2022 pada 11.48
+-- Waktu pembuatan: 20 Bulan Mei 2022 pada 11.42
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -45,7 +45,14 @@ CREATE TABLE `appointment` (
 INSERT INTO `appointment` (`id`, `id_doctor`, `id_patient`, `appointment_id`, `appointment_date`, `appointment_time`, `status`, `note`) VALUES
 (47, 22, 1011, 'AP20220519055140', '2022-05-19', '14:00', 1, 'Sakit Parah Bgt'),
 (48, 22, 1010, 'AP20220519094435', '2022-05-19', '4:30', 1, ''),
-(49, 22, 1019, 'AP20220519094732', '2022-05-19', '00:45', 0, '');
+(49, 22, 1019, 'AP20220519094732', '2022-05-19', '00:45', 0, ''),
+(50, 22, 1019, 'AP20220520050011', '2022-05-20', '3:30', 1, ''),
+(51, 22, 1019, 'AP20220520050018', '2022-05-20', '4:15', 0, ''),
+(52, 22, 1019, 'AP20220520050027', '2022-05-21', '4:15', 0, ''),
+(53, 22, 1019, 'AP20220520050040', '2022-05-21', '00:00', 0, ''),
+(54, 22, 1019, 'AP20220520050121', '2022-05-24', '00:00', 0, ''),
+(55, 22, 1019, 'AP20220520050134', '2022-06-09', '00:00', 0, ''),
+(56, 22, 1019, 'AP20220520050142', '2022-06-10', '00:00', 0, '');
 
 -- --------------------------------------------------------
 
@@ -177,7 +184,8 @@ INSERT INTO `item_recipe_drug_patient` (`id`, `id_drug`, `id_master_recipe_drug_
 (6, 3, 15, 15, 'Di Minum 3 kali sehari', NULL),
 (7, 7, 16, 23, 'Oke', NULL),
 (8, 7, 16, 23, 'Oke', NULL),
-(9, 7, 16, 23, 'Oke', NULL);
+(9, 7, 16, 23, 'Oke', NULL),
+(10, 7, 17, 3, 'Drink Everytime', NULL);
 
 -- --------------------------------------------------------
 
@@ -228,7 +236,8 @@ INSERT INTO `master_recipe_drug_patient` (`id`, `recipe_id`, `id_patient`, `reas
 (13, 'R220512091403', 1011, 'Saya Pusing', 'Sakit Kepala', 'After Lunch', '2022-05-12'),
 (14, 'R220512091444', 1014, 'Es terosss', 'Batuk', 'Di jaga', '2022-05-12'),
 (15, 'R220517102102', 1019, 'Pusing 7 keliling', 'Migrain', 'Di Minum 3 kali sehari', '2022-05-17'),
-(16, 'R220518060229', 1015, 'HeadAche', 'Kronis Head', 'baik baik yaaa', '2022-05-18');
+(16, 'R220518060229', 1015, 'HeadAche', 'Kronis Head', 'baik baik yaaa', '2022-05-18'),
+(17, 'R220520050911', 1019, 'Hand Crash', 'Handache', 'Drink Everytime', '2022-05-20');
 
 -- --------------------------------------------------------
 
@@ -267,8 +276,8 @@ CREATE TABLE `patient` (
   `patient_id` varchar(32) DEFAULT NULL,
   `patient_name` varchar(128) DEFAULT NULL,
   `sex` int(2) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
   `blood_type` varchar(32) DEFAULT NULL,
-  `age` int(3) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `phone_number_1` varchar(20) DEFAULT NULL,
   `email` varchar(96) DEFAULT NULL,
@@ -279,16 +288,15 @@ CREATE TABLE `patient` (
 -- Dumping data untuk tabel `patient`
 --
 
-INSERT INTO `patient` (`id`, `patient_id`, `patient_name`, `sex`, `blood_type`, `age`, `address`, `phone_number_1`, `email`, `date_created`) VALUES
-(1010, 'P220418033524', 'Polim Puan', 2, 'A', 25, 'ok', '2568487', 'tkj2.0erlangga.sa@me.geli', '2022-04-18'),
-(1011, 'P220418034258', 'Angga Yunanda', 1, 'B', 18, 'Ok', '11312', 'angga@mail.com', '2022-04-18'),
-(1012, 'P220418034322', 'Febri Ananda', 2, 'AB', 25, 'ok', '123', 'feb@b.com', '2022-04-18'),
-(1013, 'P220418034340', 'Sinta Nusantara', 2, 'A', 30, 'Ok', '123', 'sin@sin.com', '2022-04-18'),
-(1014, 'P220418034423', 'Umi Latifah', 2, 'AB', 17, 'ok', '123123456', 'lat@lat.com', '2022-04-18'),
-(1015, 'P220418034458', 'Andrianto', 1, 'AB', 24, 'Ok', '021021021', 'ok@Pop.com', '2022-04-18'),
-(1016, 'P220418034517', 'Son Sendra', 1, 'AB', 74, 'ad', '02133636987', 'tkj2.0erlangga.sa@me.geli', '2022-04-18'),
-(1017, 'P220418034535', 'Ridwan Malik', 1, 'B', 45, 'dassda', '02445454', 'megiccard@a.com', '2022-04-18'),
-(1019, 'P220418034637', 'Bob Mama', 2, 'B', 26, 'asdsdasda', '12121212121', 'oasdsa@oasdasdk.com', '2022-04-18');
+INSERT INTO `patient` (`id`, `patient_id`, `patient_name`, `sex`, `birth_date`, `blood_type`, `address`, `phone_number_1`, `email`, `date_created`) VALUES
+(1010, 'P220418033524', 'Polim Puan', 2, NULL, 'A', 'ok', '2568487', 'tkj2.0erlangga.sa@me.geli', '2022-04-18'),
+(1011, 'P220418034258', 'Angga Yunanda', 1, NULL, 'B', 'Ok', '11312', 'angga@mail.com', '2022-04-18'),
+(1013, 'P220418034340', 'Sinta Nusantara', 2, NULL, 'A', 'Ok', '123', 'sin@sin.com', '2022-04-18'),
+(1014, 'P220418034423', 'Umi Latifah', 2, NULL, 'AB', 'ok', '123123456', 'lat@lat.com', '2022-04-18'),
+(1015, 'P220418034458', 'Andrianto', 1, NULL, 'AB', 'Ok', '021021021', 'ok@Pop.com', '2022-04-18'),
+(1017, 'P220418034535', 'Ridwan Malik', 2, '0000-00-00', 'A', 'dassda', '02445454', 'megiccard@a.com', '2022-04-18'),
+(1019, 'P220418034637', 'Bob Mama', 1, '1976-04-20', 'A', 'asdsdasda', '12121212121', 'oasdsa@oasdasdk.com', '2022-04-18'),
+(1020, 'P220520061547', 'Ismail Dwi Nugroho', 1, '2000-01-10', 'A', 'Di Depkes', '0215522114', 'ismael22@gmail.com', '2022-05-20');
 
 -- --------------------------------------------------------
 
@@ -411,7 +419,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT untuk tabel `checking`
@@ -435,37 +443,37 @@ ALTER TABLE `drug`
 -- AUTO_INCREMENT untuk tabel `item_checking_sheet_patient`
 --
 ALTER TABLE `item_checking_sheet_patient`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `item_recipe_drug_patient`
 --
 ALTER TABLE `item_recipe_drug_patient`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_checking_sheet_patient`
 --
 ALTER TABLE `master_checking_sheet_patient`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_recipe_drug_patient`
 --
 ALTER TABLE `master_recipe_drug_patient`
-  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `medical_record`
 --
 ALTER TABLE `medical_record`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1020;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1021;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

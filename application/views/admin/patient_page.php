@@ -22,7 +22,7 @@
 									<div class="card-body py-0">
 										<!--begin::Table-->
 										<div class="table-responsive">
-											<table id="data_tbl" class="table table-head-custom table-vertical-center">
+											<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
 												<thead>
 													<tr class="text-uppercase">
 														
@@ -60,11 +60,11 @@
 																'<?= $dp['patient_id']; ?>',
 																'<?= $dp['patient_name']; ?>',
 																'4',
-																'<?= $dp['age']; ?>',
 																'<?= $dp['email']; ?>',
 																'<?= $dp['phone_number_1']; ?>',
 																'<?= $dp['blood_type']; ?>',
-																'<?= $dp['address']; ?>'
+																'<?= $dp['address']; ?>',
+																'<?= $dp['birth_date']; ?>'
 
 
 																)">
@@ -147,27 +147,15 @@
                 			<option value="2">FEMALE</option>
                 		</select>
                 	</div>
-                	<div class="col-3"> 
-                		<center><b>AGE</b></center>
+                		<div class="col-6"> 
+                		<center><b>BIRTH DATE</b></center>
                 		<br>
-                		<input type="number" id="pat_age" value="" class="form-control" name="patient_age"/></div>
-
-                	<div class="col-6"> 
-                		<center><b>Email Address</b></center>
-                		<br>
-                		<input type="email"  id="pat_email" class="form-control" name="patient_email"/></div>
+                		<input type="date" class="form-control" name="birth_date" id="pat_bd" value="" />
                 		
                 	
                 	
                 </div>
-                <br>
-                <div class="row">
-                	<div class="col"> 
-                		<center><b>NUMBER PHONE</b></center>
-                		<br>
-                		<input type="tel" id="pat_no1" placeholder="0812-1212-2121" value="" class="form-control" name="no_handphone_1"/></div>
-               
-                	<div class="col"> 
+                <div class="col-3"> 
                 		<center><b>BLOOD TYPE</b></center>
                 		<br>
                 		<select class="form-control" name="blood_type" id="pat_bt">
@@ -177,6 +165,26 @@
                 			<option value="O">O</option>
                 		</select>
                 </div>
+
+                	
+                	
+                	
+                </div>
+                <br>
+                <div class="row">
+                	<div class="col"> 
+                		<center><b>NUMBER PHONE</b></center>
+                		<br>
+                		<input type="tel" id="pat_no1" placeholder="0812-1212-2121" value="" class="form-control" name="no_handphone_1"/></div>
+
+
+                		<div class="col"> 
+                		<center><b>Email Address</b></center>
+                		<br>
+                		<input type="email"  id="pat_email" class="form-control" name="patient_email"/></div>
+                		
+               
+                	
             </div>
                 <br>
                 <div class="row">
@@ -222,7 +230,7 @@
                 <input type="text" value="" class="form-control" name="patient_name"/>
                 <br>
                 <div class="row">
-                	<div class="col-4"> 
+                	<div class="col-3"> 
                 		<center><b>SEX</b></center>
                 		<br>
                 		<select class="form-control" name="patient_sex">
@@ -230,12 +238,17 @@
                 			<option value="2">FEMALE</option>
                 		</select>
                 	</div>
-                	<div class="col-4"> 
-                		<center><b>AGE</b></center>
+                	
+                	<div class="col-6"> 
+                		<center><b>BIRTH DATE</b></center>
                 		<br>
-                		<input type="number" value="" class="form-control" name="patient_age"/></div>
+                		<input type="date" class="form-control" name="birth_date" value="<?= date('Y-m-d'); ?>" />
+                		
+                	
+                	
+                </div>
 
-                	<div class="col-4"> 
+                	<div class="col-3"> 
                 		<center><b>BLOOD TYPE</b></center>
                 		<br>
                 		<select class="form-control" name="blood_type">
@@ -306,18 +319,6 @@
 </div>
 
 
-<script 
-	 src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
-     integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
-     crossorigin="anonymous"
-     referrerpolicy="no-referrer">
-		$(document).ready(function() {
-    $('#data_tbl').DataTable( {
-       
-    } );
-} );
-</script>
-
 
 <script type="text/javascript">
 
@@ -333,7 +334,7 @@
 	}
 
 
-	function popupupdatepatient(id, pat_id, pat_name, pat_sex, pat_age, pat_email, pat_no1, bat_bt, pat_add)
+	function popupupdatepatient(id, pat_id, pat_name, pat_sex, pat_email, pat_no1, bat_bt, pat_add, pat_bd)
 	{
 
 		$('#edit_data_patient').modal('show');
@@ -342,11 +343,11 @@
 		$('#pat_id').val(pat_id);
 		$('#pat_name').val(pat_name);
 		$('#pat_sex').val(pat_sex);
-		$('#pat_age').val(pat_age);
 		$('#pat_email').val(pat_email);
 		$('#pat_no1').val(pat_no1);
 		$('#bat_bt').val(bat_bt);
 		$('#pat_add').val(pat_add);
+		$('#pat_bd').val(pat_bd);
 		
 	}
 

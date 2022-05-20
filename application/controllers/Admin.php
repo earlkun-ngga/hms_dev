@@ -102,6 +102,17 @@
 			
 		}
 
+
+		public function test_view_table()
+		{
+
+
+			$data['data_patient'] = $this->Patient_Model->get_patient_all();
+
+			$this->load->view('admin/testktable', $data);
+
+		}
+
 		public function appointment_expired()
 		{
 

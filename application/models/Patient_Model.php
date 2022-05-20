@@ -29,7 +29,7 @@
 			$this->db->set('patient_id', $data['patient_id']);
 			$this->db->set('patient_name', str_replace(['"',"'"], "", $data['patient_name']));
 			$this->db->set('sex', $data['patient_sex']);
-			$this->db->set('age', $data['patient_age']);
+			$this->db->set('birth_date', $data['birth_date']);
 			$this->db->set('address', str_replace(['"',"'"], "", $data['address_patient']));
 			$this->db->set('phone_number_1', str_replace(['"',"'"], "", $data['no_handphone_1']));
 			$this->db->set('blood_type', $data['blood_type']);
@@ -50,7 +50,7 @@
 			
 			$this->db->set('patient_name', str_replace(['"',"'"], "", $data['patient_name']));
 			$this->db->set('sex', $data['patient_sex']);
-			$this->db->set('age', $data['patient_age']);
+			$this->db->set('birth_date', $data['birth_date']);
 			$this->db->set('address', str_replace(['"',"'"], "", $data['address_patient']));
 			$this->db->set('phone_number_1', str_replace(['"',"'"], "", $data['no_handphone_1']));
 			$this->db->set('blood_type', $data['blood_type']);
