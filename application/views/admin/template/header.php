@@ -639,12 +639,12 @@
 										<div class="tab-pane justify-content-between px-4 px-lg-0 <?= ($big == '2') ? 'show active' : ''; ?>" id="kt_header_tab_2">
 											<div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
 												<!--begin::Actions-->
-												<a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">All</a>
+												<a href="<?= base_url(); ?>admin/appointment" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">All</a>
 												<a href="<?= base_url(); ?>admin/appointment_today" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">Today</a>
-												<a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">This Week</a>
-												<a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">This Month</a>
-												<a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">This Year</a>
-												<a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">Missed</a>
+												<!-- <a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">This Week</a> -->
+												<a href="<?= base_url(); ?>admin/appointment_this_month" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">This Month</a>
+												<!-- <a href="#" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">This Year</a> -->
+												<a href="<?= base_url(); ?>admin/appointment_expired" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">Expired</a>
 
 												<!--end::Actions-->
 											</div>
@@ -696,6 +696,7 @@
 											<div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
 												<!--begin::Actions-->
 												<a href="<?= base_url(); ?>admin/patient_manage_page" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">Patient</a>
+												<a href="<?= base_url(); ?>admin/appointment_today" class="btn btn-light font-weight-bold mr-3 my-2 my-lg-0">Need Checkup Today</a>
 												
 												<!--end::Actions-->
 											</div>

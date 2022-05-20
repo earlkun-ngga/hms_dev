@@ -47,4 +47,12 @@
 	 		return $this->db->get($this->table)->row_array();
 	 	}
 
+
+
+
+	 	public function get_count()
+	 	{
+	 		return $this->db->get($this->table)->num_rows();
+	 	}
+
 	}

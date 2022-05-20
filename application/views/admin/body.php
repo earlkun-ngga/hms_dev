@@ -22,7 +22,7 @@
 
 												</div>
 
-												<div class="col-8"> <h1>1535</h1>PATIENT</div>
+												<div class="col-8"> <h1><div id="val_pat"></div></h1>PATIENT</div>
 											</div>
 										</div>
 									</div>
@@ -42,7 +42,7 @@
 
 												</div>
 
-												<div class="col-8"> <h1>2132</h1>CLS SHEET</div>
+												<div class="col-8"> <h1><div id="val_cls"></div></h1>CLS SHEET</div>
 											</div>
 										</div>
 									</div>
@@ -62,7 +62,7 @@
 
 												</div>
 
-												<div class="col-8"> <h1>1005</h1>RECIPE</div>
+												<div class="col-8"> <h1><div id="val_rcp"></div></h1>RECIPE</div>
 											</div>
 										</div>
 									</div>
@@ -84,7 +84,7 @@
 
 												</div>
 
-												<div class="col-8"> <h1>1720</h1>RECEIPT</div>
+												<div class="col-8"> <h1>0</h1>RECEIPT</div>
 											</div>
 										</div>
 									</div>
@@ -164,8 +164,35 @@
 
 	$.ajax({
 		method: 'GET',
-		url `<?= base_url(); ?>Api/`
+		url: `<?= base_url(); ?>Api/get_count_patient`,
+		success: function(data) {
+			var angka_patient = JSON.parse(data);
+			$('#val_pat').append(angka_patient);
+		}
+	});
 
-	})
+
+
+
+
+	$.ajax({
+		method: 'GET',
+		url: `<?= base_url(); ?>Api/get_count_cls`,
+		success: function(data) {
+			var angka_cls = JSON.parse(data);
+			$('#val_cls').append(angka_cls);
+		}
+	});
+
+	$.ajax({
+		method: 'GET',
+		url: `<?= base_url(); ?>Api/get_count_recipe`,
+		success: function(data) {
+			var angka_rcp = JSON.parse(data);
+			$('#val_rcp').append(angka_rcp);
+		}
+	});
+
+
 
 </script>

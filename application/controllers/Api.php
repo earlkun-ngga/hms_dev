@@ -15,6 +15,8 @@
 			$this->load->model('ItemMasterRecipe_Model');
 			$this->load->model('MasterCheckingSheet_Model');
 			$this->load->model('ItemMasterCheckingSheet_Model');
+			$this->load->model('MasterRecipe_Model');
+
 
 
 
@@ -55,6 +57,17 @@
 		{
 			echo json_encode($this->Patient_Model->get_count());
 		}
+
+		public function get_count_cls()
+		{
+			echo json_encode($this->MasterCheckingSheet_Model->get_count());
+		}
+
+		public function get_count_recipe()
+		{
+			echo json_encode($this->MasterRecipe_Model->get_count());
+		}
+
 
 
 	}

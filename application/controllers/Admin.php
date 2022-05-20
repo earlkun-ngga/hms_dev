@@ -60,19 +60,60 @@
 		public function get_all_appointment()
 		{
 			echo json_encode($this->Appointment_Model->get_all_apointment_with_join());
-
 		}
 
 		public function appointment() {
 
 			$head['big'] = '2';
-
 			$body['data_patient'] = $this->Patient_Model->get_patient_all();
 			$body['data_doctor'] = $this->Doctor_Model->get_docter_all();
 			$body['data_appointment'] = $this->Appointment_Model->get_all_apointment_with_join();
 			$this->load->view('admin/template/header', $head);
 			$this->load->view('admin/appointment', $body);
 			$this->load->view('admin/template/footer');
+		}
+
+
+		public function appointment_today()
+		{
+
+
+			$head['big'] = '2';
+			$body['data_patient'] = $this->Patient_Model->get_patient_all();
+			$body['data_doctor'] = $this->Doctor_Model->get_docter_all();
+			$body['data_appointment'] = $this->Appointment_Model->get_all_appointment_with_join_today();
+			$this->load->view('admin/template/header', $head);
+			$this->load->view('admin/appointment', $body);
+			$this->load->view('admin/template/footer');	
+
+		}
+
+		public function appointment_this_month()
+		{
+
+
+			$head['big'] = '2';
+			$body['data_patient'] = $this->Patient_Model->get_patient_all();
+			$body['data_doctor'] = $this->Doctor_Model->get_docter_all();
+			$body['data_appointment'] = $this->Appointment_Model->get_all_appointment_with_join_this_month();
+			$this->load->view('admin/template/header', $head);
+			$this->load->view('admin/appointment', $body);
+			$this->load->view('admin/template/footer');	
+			
+		}
+
+		public function appointment_expired()
+		{
+
+
+			$head['big'] = '2';
+			$body['data_patient'] = $this->Patient_Model->get_patient_all();
+			$body['data_doctor'] = $this->Doctor_Model->get_docter_all();
+			$body['data_appointment'] = $this->Appointment_Model->get_all_appointment_with_join_expired();
+			$this->load->view('admin/template/header', $head);
+			$this->load->view('admin/appointment', $body);
+			$this->load->view('admin/template/footer');	
+			
 		}
 
 		public function drugs()
