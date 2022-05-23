@@ -20,7 +20,7 @@
                                     <div class="card-body py-0">
                                         <!--begin::Table-->
                                         <div class="table-responsive">
-                                            <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
+                                            <table class="table" id="kt_datatable">
                                                 <thead>
                                                     <tr class="text-uppercase">
                                                         <th style="min-width: 150px"><center>FOLLOW UP DATE</center></th>

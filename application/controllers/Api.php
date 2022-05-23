@@ -23,6 +23,12 @@
 		}
 
 
+		public function get_all_patient()
+		{
+			echo json_encode($this->Patient_Model->get_patient_all());
+		}
+
+
 		public function get_data_appointment_by_date_time_doct($data1, $data2, $data3)
 		{
 

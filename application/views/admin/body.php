@@ -104,7 +104,7 @@
 								<div class="row">
 									<div class="col">
 
-										<table class="table">
+										<table class="table" id="kt_datatable">
 											<thead>
 											<tr>
 												<th><b>#</b></th>

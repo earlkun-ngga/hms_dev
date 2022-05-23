@@ -16,7 +16,7 @@
 									</div>
 									<div class="card-body py-0">
 										<div class="table-responsive">
-											<table class="table table-head-custom table-vertical-center" id="table_doctor">
+											<table class="table table-head-custom table-vertical-center" id="kt_datatable">
 												<thead>
 													<tr class="text-uppercase">
 														<th class="pl-0" style="min-width: 100px">RECIPE CODE</th>

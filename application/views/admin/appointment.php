@@ -22,14 +22,14 @@
                                     <div class="card-body py-0">
                                         <!--begin::Table-->
                                         <div class="table-responsive">
-                                            <table class="table table-head-custom table-vertical-center">
+                                            <table class="table table-head-custom table-vertical-center" id="kt_datatable">
                                                 <thead>
                                                     <tr class="text-uppercase">
                                                         <th style="min-width: 120px">#ID</th>
                                                         <th style="min-width: 150px">DATE</th>
                                                         <th style="min-width: 120px">PATIENT NAME</th>
                                                         <th style="min-width: 150px">DOCTOR NAME</th>
-                                                        <th class="pr-0 text-right" style="min-width: 160px">ACTION</th>
+                                                        <th style="min-width: 160px">ACTION</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -39,7 +39,7 @@
                                                         <td><?= $da['appointment_date']; ?> | <?= $da['appointment_time']; ?></td>
                                                         <td><?= $da['patient_name']; ?></td>
                                                         <td><?= $da['doctor_name']; ?></td>
-                                                        <td class="pr-0 text-right">
+                                                        <td >
                                                         
                                                        <?php if($da['appointment_date'] == date('Y-m-d')) {
 

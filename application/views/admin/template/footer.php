@@ -6,6 +6,10 @@
 		<script src="<?= base_url(); ?>assets/plugins/global/plugins.bundle.js"></script>
 		<script src="<?= base_url(); ?>assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 		<script src="<?= base_url(); ?>assets/js/scripts.bundle.js"></script>
+		<script src="<?= base_url(); ?>assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Page Vendors-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="<?= base_url(); ?>assets/js/pages/crud/datatables/data-sources/html.js"></script>
 		<!--end::Global Theme Bundle-->
 	</body>
 	<!--end::Body-->
