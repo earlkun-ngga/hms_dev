@@ -349,15 +349,28 @@
                         <div class="row">
                             <div class="mx-1 col card">
                                 <br>
-                                <b>Disease Progress</b>
+                                <div class="row">
+                                    <div class="col"><b>Disease Progress</b></div>
+                                    <div class="col"><center><b onclick="show_form_disesae_progress()" class="btn btn-light">+</b></center></div>
+                                </div>
                                 <hr>
+                                <div id="form_input_disesae_progress" class="card-footer">
+                                    <div class="row">
+                                    <div class="col"><input type="text" class="form-control" /></div>
+                                    </div>
+                                    <br>
+                                    <div class="row"><div class="col"><input type="submit" class="btn btn-success" value="Save" /></div></div>
+                                </div>
                             </div>
-                            <div class="mx-1 col card">
+                           
+                          
+                        </div>
+                        <div class="row">
+                             <div class="mx-1 col card">
                                 <br>
                                 <b>Sign of Life</b>
                                 <hr>
                             </div>
-                          
                         </div>
                         <br>
                          <div class="row">
@@ -487,6 +500,11 @@
                                 <br>
                                 <b>History</b>
                                 <hr>
+                               <div id="idhistory">
+                                   
+
+                               </div>
+
                             </div>
                             <div class="mx-1 col card">
                                 <br>
@@ -510,6 +528,30 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal_pop_history" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">DETAIL HISTORY CLS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+             
+            </div>
+
+
+               <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">PRINT</button>
+              
+      
+            </div>
+        </div>
+    </div>
+</div> 
+
 
 <div class="modal fade" id="detail_cls" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -582,13 +624,7 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-
+</div>  
 
 </div>
 
@@ -598,10 +634,71 @@
 
 <script type="text/javascript">
 
+    $('#form_input_disesae_progress').hide();
+
+
+
+    function get_list_history(idpatient)
+    {
+        $('#idhistory').empty();
+
+        $.ajax({
+
+            url: `<?= base_url(); ?>Api/get_all_cls_by_id_patient/${idpatient}`,
+            method: 'GET',
+            success: function(data)
+            {
+                var data_real = JSON.parse(data);
+                // console.log(data_real.length);
+           
+                 for(var i = 0; i < data_real.length; i++) { 
+                 var content = `   <div class="card">
+                                    <div class="row px-1 py-1">
+                                        <div class="col-8"><center><div style="font-size : 12px;">${data_real[i]['created_date']}</div></center></div>
+                                        <div class="col-2"><a data-toggle="modal" onclick="detail_cls_by_id('${data_real[i]['id']}')" data-target="#detail_cls"  href="#">
+                                                <span class="svg-icon svg-icon-dark"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Shopping\Credit-card.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2"/>
+                                        <rect fill="#000000" x="2" y="8" width="20" height="3"/>
+                                        <rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1"/>
+                                    </g>
+                                </svg><!--end::Svg Icon--></span>
+
+
+                                        </a></div>
+                                    </div>
+                                </div>
+                                <br>`;
+
+            $('#idhistory').append(content);
+            }
+
+
+            }
+
+        });
+
+
+
+
+
+
+
+
+    }
+
+
+    function show_form_disesae_progress()
+    {
+        $('#form_input_disesae_progress').show();
+    }
+
 
     function popup_edit_cls(id, name, phone, sex, id_medrec)
     {
 
+        get_list_history(id);
        
         $('#cls_name').empty();
         $('#cls_name').append(name);
@@ -665,8 +762,8 @@
         $('#rc_sex').append('Female');
         }
 
-        console.log(id);
-        console.log(sex);
+        // console.log(id);
+        // console.log(sex);
 
      
 
@@ -674,9 +771,9 @@
 
     function popup_detail(id, doctor_name, patient_name, date, blood_type, checks, diagnosis)
     {
-        console.log(id);
-        console.log(doctor_name);
-        console.log(patient_name);
+        // console.log(id);
+        // console.log(doctor_name);
+        // console.log(patient_name);
 
         $('#id_medrec').val(id);
         $('#doct_name').empty();
@@ -785,6 +882,7 @@
         $('#dcls_code').empty();
         $('#dcls_instruction').empty();
         $('#checking_item').empty();
+        $('#dcls_created_date').empty();
 
         $.ajax({
 
@@ -833,6 +931,7 @@
                     $('#header_detail_cls').append(col);
                     $('#dcls_code').append(`#${data_hasil['cs_id']}`);
                     $('#dcls_instruction').append(data_hasil['instruction']);
+                    $('#dcls_created_date').append(data_hasil['created_date']);
 
 
 
@@ -846,8 +945,119 @@
 
                             var data_hasil_2 = JSON.parse(data2);
 
-                            console.log(data_hasil_2.length)
-                            console.log(data_hasil_2);
+                            // console.log(data_hasil_2.length)
+                            // console.log(data_hasil_2);
+
+                            for(var i = 0; i < data_hasil_2.length; i++)
+                            {
+
+
+                            var col2 =    `<div class="row">
+                                    <div class="col-2"><h4><center>1</center></h4></div>
+                                    <div class="col-8">${data_hasil_2[i]['name_checking']}</div>
+                                    <div class="col-2"><h5>${data_hasil_2[i]['checking_qty']} QTY</h5></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2"></div>
+                                    <div class="col-8">Note : ${data_hasil_2[i]['checking_note']}</div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"><hr></div>
+                            </div>`;
+
+
+                        $('#checking_item').append(col2);
+                        }
+
+
+
+                        }
+                    })
+
+
+
+                 
+
+
+            }
+        })
+   
+    }
+
+    function detail_cls_by_id(id)
+    {
+        //set to default empty
+        $('#header_detail_cls').empty();
+        $('#dcls_code').empty();
+        $('#dcls_instruction').empty();
+        $('#checking_item').empty();
+        $('#dcls_created_date').empty();
+
+        $.ajax({
+
+            type: 'GET',
+            url: `<?= base_url(); ?>Api/get_master_cls_patient_by_id/${id}`,
+            success: function(data)
+            {
+
+
+                  var data_hasil = JSON.parse(data);
+
+                  if(data_hasil['sex'] == '1')
+                  {
+                    var gender = 'Male';
+                  } else {
+                    var gender = 'Female';
+                  }
+                     var col = `<div class="col">
+                        <table>
+                            <tr>
+                                <td>Name : </td>
+                                <td id="dcls_name_patient">${data_hasil['patient_name']}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone : </td>
+                                <td id="dcls_phone_patient">${data_hasil['phone_number_1']}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender : </td>
+                                <td id="dcls_sex_patient">${(data_hasil['sex'] == '1') ? 'Male' :'Female'}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <table>
+                            <tr>
+                                <td>Place Test : </td>
+                                <td id="dcls_place_test">${data_hasil['place_test']}</td>
+                            </tr>
+                            <tr>
+                                <td>Diagnostic : </td>
+                                <td id="dcls_diagnostic">${data_hasil['diagnostic']}</td>
+                            </tr>
+                        </table>
+                    </div>`;
+                    $('#header_detail_cls').append(col);
+                    $('#dcls_code').append(`#${data_hasil['cs_id']}`);
+                    $('#dcls_instruction').append(data_hasil['instruction']);
+                    $('#dcls_created_date').append(data_hasil['created_date']);
+                    // console.log(data_hasil['created_date']);
+
+
+
+
+                    $.ajax({
+                        type: 'GET',
+                        url: `<?= base_url(); ?>Api/get_item_checking_sheet_patient_by_id_master_checking_sheet/${data_hasil['id']}`,
+                        success: function(data2)
+                        {
+
+
+                            var data_hasil_2 = JSON.parse(data2);
+
+                            // console.log(data_hasil_2.length)
+                            // console.log(data_hasil_2);
 
                             for(var i = 0; i < data_hasil_2.length; i++)
                             {

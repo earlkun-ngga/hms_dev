@@ -28,12 +28,15 @@
 			echo json_encode($this->Patient_Model->get_patient_all());
 		}
 
+		public function get_all_cls_by_id_patient($id)
+		{
+			echo json_encode($this->MasterCheckingSheet_Model->get_all_by_id_patient($id));
+		}
 
 		public function get_data_appointment_by_date_time_doct($data1, $data2, $data3)
 		{
 
-			// echo $data1 . $data2 . $data3;
-
+			
 			echo json_encode($this->Appointment_Model->get_appointment_by_date_time_doct($data1, $data2, $data3));
 
 		}
@@ -47,6 +50,11 @@
 		public function get_master_cls_patient_by_id_medical_record($id)
 		{
 			echo json_encode($this->MasterCheckingSheet_Model->get_cls_by_id_medical_record($id));
+		}
+
+		public function get_master_cls_patient_by_id($id)
+		{
+			echo json_encode($this->MasterCheckingSheet_Model->get_cls_by_id($id));
 		}
 
 

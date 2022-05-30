@@ -29,7 +29,7 @@
 
 			}
 
-		// Halaman Dashboard
+		// HALAMAN DASHBOARD
 		public function index() {
 
 			$head['big'] = '1';
@@ -103,15 +103,7 @@
 		}
 
 
-		public function test_view_table()
-		{
-
-
-			$data['data_patient'] = $this->Patient_Model->get_patient_all();
-
-			$this->load->view('admin/testktable', $data);
-
-		}
+	
 
 		public function appointment_expired()
 		{
@@ -126,6 +118,9 @@
 			$this->load->view('admin/template/footer');	
 			
 		}
+
+		//CLINIC
+		//DRUGS
 
 		public function drugs()
 		{
@@ -192,7 +187,6 @@
 			}
 		}
 
-		//CLINIC
 
 
 		public function list_recipe_patient()
@@ -374,5 +368,15 @@
 			} else {
 				echo '<script>window.location.replace("'.base_url().'admin/patient_manage_page ");</script>';
 			}
+		}
+
+
+		//ACCOUNTING
+		public function accounting_payment()
+		{
+			$head['big'] = '4';
+			$this->load->view('admin/template/header', $head);
+
+			$this->load->view('admin/template/footer', $head);
 		}
 	}
