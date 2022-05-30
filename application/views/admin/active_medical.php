@@ -329,7 +329,7 @@
 
                             <div class="col-6">
                                <center>
-                                   <i>8 Mei 2022</i>
+                                   <i><?= date('d-M-Y'); ?></i>
                                    <br>
                                    Created
                                    <br>

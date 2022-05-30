@@ -96,7 +96,7 @@
 								<div class="row">
 									<div class="col">
 										<div class="card bg-danger px-5 py-2" style="width: 50%;">
-											<h4><font color="white">The batches of medicine will expire in the next 50 days</font></h4>
+											<h4><font color="white">LIST CONDITION STOCK DRUGS AND EXPIRED DATE</font></h4>
 										</div>
 									</div>
 								</div>
@@ -107,43 +107,23 @@
 										<table class="table" id="kt_datatable">
 											<thead>
 											<tr>
-												<th><b>#</b></th>
 												<th><b>NAME OF ITEM</b></th>
 												<th><b>EXPIRY</b></th>
 												<th><b>QTY</b></th>
-												<th><b>DATE ADDED</b></th>
 												<th><b>COUPON CODE</b></th>
 												<th><b>LOT CODE</b></th>
 											</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>1</td>
-													<td>OBH</td>
-													<td>2022-05-05</td>
-													<td>12</td>
-													<td>2021-05-05</td>
-													<td></td>
-													<td>111-222-3333-4</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>OBH</td>
-													<td>2022-05-05</td>
-													<td>12</td>
-													<td>2021-05-05</td>
-													<td></td>
-													<td>111-222-3333-4</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>OBH</td>
-													<td>2022-05-05</td>
-													<td>12</td>
-													<td>2021-05-05</td>
-													<td></td>
-													<td>111-222-3333-4</td>
-												</tr>
+											<?php foreach($drugs_expired_date as $ded) {  ?>
+											<tr>
+												<td><?= $ded['drug_name']; ?></td>
+												<td><?= $ded['expired_date']; ?></td>
+												<td><?= $ded['qty']; ?></td>
+												<td><?= $ded['coupon_code']; ?></td>
+												<td><?= $ded['lot_code']; ?></td>
+											</tr>
+										<?php } ?>
 											</tbody>
 																						
 										</table>

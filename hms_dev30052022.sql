@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Bulan Mei 2022 pada 11.42
+-- Waktu pembuatan: 30 Bulan Mei 2022 pada 11.33
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -50,7 +50,7 @@ INSERT INTO `appointment` (`id`, `id_doctor`, `id_patient`, `appointment_id`, `a
 (51, 22, 1019, 'AP20220520050018', '2022-05-20', '4:15', 0, ''),
 (52, 22, 1019, 'AP20220520050027', '2022-05-21', '4:15', 0, ''),
 (53, 22, 1019, 'AP20220520050040', '2022-05-21', '00:00', 0, ''),
-(54, 22, 1019, 'AP20220520050121', '2022-05-24', '00:00', 0, ''),
+(54, 22, 1019, 'AP20220520050121', '2022-05-24', '00:00', 1, ''),
 (55, 22, 1019, 'AP20220520050134', '2022-06-09', '00:00', 0, ''),
 (56, 22, 1019, 'AP20220520050142', '2022-06-10', '00:00', 0, '');
 
@@ -133,6 +133,34 @@ INSERT INTO `drug` (`id`, `drug_id`, `drug_name`, `qty`, `unit`, `spec`, `catego
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `drug_stock`
+--
+
+CREATE TABLE `drug_stock` (
+  `id` int(50) NOT NULL,
+  `id_drug` int(10) DEFAULT NULL,
+  `expired_date` date DEFAULT NULL,
+  `drug_stock_id` varchar(100) DEFAULT NULL,
+  `qty` int(100) DEFAULT NULL,
+  `coupon_code` varchar(100) DEFAULT NULL,
+  `lot_code` varchar(100) DEFAULT NULL,
+  `note` text DEFAULT NULL,
+  `created_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `drug_stock`
+--
+
+INSERT INTO `drug_stock` (`id`, `id_drug`, `expired_date`, `drug_stock_id`, `qty`, `coupon_code`, `lot_code`, `note`, `created_date`) VALUES
+(6, 3, '2022-05-25', 'STDR220530110615', 12, '123123123', '123111333', 'Ok', '2022-05-30'),
+(7, 3, '2022-05-18', 'STDR220530110859', 300, '500', '5000000', 'ok', '2022-05-30'),
+(8, 8, '2025-10-30', 'STDR220530111113', 8, '123123123', '558855', 'Ok', '2022-05-30'),
+(9, 8, '2024-06-11', 'STDR220530111204', 15, '121212', '1112223333', 'Ok', '2022-05-30');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `item_checking_sheet_patient`
 --
 
@@ -154,7 +182,10 @@ INSERT INTO `item_checking_sheet_patient` (`id`, `id_master_checking_sheet_patie
 (3, 5, 1, 'Test Darah', 3),
 (4, 5, 4, 'Usg', 2),
 (5, 5, 3, 'EKG Test Routine', 3),
-(6, 5, 6, 'MRI Test', 1);
+(6, 5, 6, 'MRI Test', 1),
+(8, 7, 5, 'oke', 1),
+(9, 7, 3, 'oke', 1),
+(10, 7, 1, 'oke', 1);
 
 -- --------------------------------------------------------
 
@@ -210,7 +241,8 @@ CREATE TABLE `master_checking_sheet_patient` (
 
 INSERT INTO `master_checking_sheet_patient` (`id`, `cs_id`, `id_patient`, `id_medical_record`, `diagnostic`, `instruction`, `place_test`, `created_date`) VALUES
 (4, 'CLS220519090335', 1011, 11, 'Sakit Kepala', 'Sedang Pengecekan', 'Rumah Sakit', '2022-05-19'),
-(5, 'CLS220519094549', 1010, 12, 'Kanker', 'Must be check now !', 'Depok', '2022-05-19');
+(5, 'CLS220519094549', 1010, 12, 'Kanker', 'Must be check now !', 'Depok', '2022-05-19'),
+(7, 'CLS220530045810', 1011, 11, 'Kronis Head', 'test', 'Placetest', '2022-05-30');
 
 -- --------------------------------------------------------
 
@@ -263,7 +295,8 @@ CREATE TABLE `medical_record` (
 
 INSERT INTO `medical_record` (`id`, `id_doctor`, `id_patient`, `id_appointment`, `medical_record_id`, `diagnosis`, `checks`, `status`, `created_date`) VALUES
 (11, 22, 1011, 47, NULL, NULL, NULL, 0, '2022-05-19'),
-(12, 22, 1010, 48, NULL, NULL, NULL, 0, '2022-05-19');
+(12, 22, 1010, 48, NULL, NULL, NULL, 0, '2022-05-19'),
+(14, 22, 1019, 54, NULL, NULL, NULL, 0, '2022-05-24');
 
 -- --------------------------------------------------------
 
@@ -356,6 +389,13 @@ ALTER TABLE `drug`
   ADD UNIQUE KEY `drug_id` (`drug_id`);
 
 --
+-- Indeks untuk tabel `drug_stock`
+--
+ALTER TABLE `drug_stock`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_drug` (`id_drug`);
+
+--
 -- Indeks untuk tabel `item_checking_sheet_patient`
 --
 ALTER TABLE `item_checking_sheet_patient`
@@ -440,10 +480,16 @@ ALTER TABLE `drug`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT untuk tabel `drug_stock`
+--
+ALTER TABLE `drug_stock`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT untuk tabel `item_checking_sheet_patient`
 --
 ALTER TABLE `item_checking_sheet_patient`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `item_recipe_drug_patient`
@@ -455,7 +501,7 @@ ALTER TABLE `item_recipe_drug_patient`
 -- AUTO_INCREMENT untuk tabel `master_checking_sheet_patient`
 --
 ALTER TABLE `master_checking_sheet_patient`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_recipe_drug_patient`
@@ -467,7 +513,7 @@ ALTER TABLE `master_recipe_drug_patient`
 -- AUTO_INCREMENT untuk tabel `medical_record`
 --
 ALTER TABLE `medical_record`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `patient`
@@ -491,6 +537,12 @@ ALTER TABLE `user`
 ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `drug_stock`
+--
+ALTER TABLE `drug_stock`
+  ADD CONSTRAINT `drug_stock_ibfk_1` FOREIGN KEY (`id_drug`) REFERENCES `drug` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `item_checking_sheet_patient`

@@ -25,6 +25,7 @@
 			$this->load->model('Checking_Model');
 			$this->load->model('MasterCheckingSheet_Model');
 			$this->load->model('ItemMasterCheckingSheet_Model');
+			$this->load->model('DrugStock_Model');
 			
 
 			}
@@ -33,9 +34,10 @@
 		public function index() {
 
 			$head['big'] = '1';
+			$data['drugs_expired_date'] = $this->DrugStock_Model->get_all_join_drug_master();
 			$this->load->view('admin/template/header', $head);
 
-			$this->load->view('admin/body');
+			$this->load->view('admin/body', $data);
 			
 			$this->load->view('admin/template/footer');
 			
@@ -162,15 +164,38 @@
 
 			// var_dump($_POST);
 		}
+		//-DRUGS-STOCK
 
-
-		public function test_temp()
+		public function drugs_stock($id)
 		{
+			$head['big'] = '3';
+			$data['id_drug'] = $id;
+			$data['drug_stock_item'] = $this->DrugStock_Model->get_all_by_id_drug($id);
+			$data['drug_data_master'] = $this->Drug_Model->get_drug_by_id($id);
+			$data['data_drug'] = $this->Drug_Model->get_all_drug();
+			$this->load->view('admin/template/header', $head);
+			$this->load->view('admin/drug_stock_list_view', $data);
+			$this->load->view('admin/template/footer');
 
 
-			$this->load->view('admin/test_template/1');
 
 		}
+
+		public function proses_input_stock_drug()
+		{
+			$this->DrugStock_Model->insert_new_drug_stock($_POST);
+
+			echo '<script>window.location.replace("'.base_url().'admin/drugs_stock/'.$_POST['id_drug'].'");</script>';
+
+		}
+
+		// public function test_temp()
+		// {
+
+
+		// 	$this->load->view('admin/test_template/1');
+
+		// }
 
 		public function appointment_fu($id_appointment, $id_doctor, $id_patient )
 		{

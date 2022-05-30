@@ -58,4 +58,13 @@
 
 		}
 
+
+		public function get_drug_by_id($id)
+		{
+			$this->db->where('id', $id);
+			return $this->db->get($this->table)->row_array();
+
+
+		}
+
 	}

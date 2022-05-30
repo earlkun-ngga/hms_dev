@@ -31,7 +31,7 @@
 														<th style="min-width: 120px">DRUG NAME</th>
 														<th style="min-width: 150px">SPEC</th>
 														<th style="min-width: 130px">CATEGORY</th>
-														<th style="min-width: 130px">QTY</th>
+														<th style="min-width: 130px">STOCK QTY</th>
 														<th style="min-width: 130px">UNIT</th>
 														<th style="min-width: 130px">PRICE</th>
 														<th class="">ACTION</th>
@@ -44,7 +44,7 @@
 														<td><?= $drug['drug_name']; ?></td>
 														<td><?= $drug['spec']; ?></td>
 														<td><?= $drug['category']; ?></td>
-														<td><?= $drug['qty']; ?></td>
+														<td><a href="<?= base_url(); ?>Admin/drugs_stock/<?= $drug['id']; ?>" class="btn btn-success">CHECK</a></td>
 														<td><?= $drug['unit']; ?></td>
 														<td><?= $drug['price_per_unit']; ?></td>
 														<td>

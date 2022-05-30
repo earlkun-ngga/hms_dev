@@ -16,6 +16,7 @@
 			$this->load->model('MasterCheckingSheet_Model');
 			$this->load->model('ItemMasterCheckingSheet_Model');
 			$this->load->model('MasterRecipe_Model');
+			$this->load->model('DrugStock_Model');
 
 
 
@@ -26,6 +27,11 @@
 		public function get_all_patient()
 		{
 			echo json_encode($this->Patient_Model->get_patient_all());
+		}
+
+		public function get_all_stock_drug_by_master()
+		{
+			echo json_encode($this->DrugStock_Model->get_all_join_drug_master());
 		}
 
 		public function get_all_cls_by_id_patient($id)
