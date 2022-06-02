@@ -21,7 +21,7 @@
 									<!--begin::Body-->
 									<div class="card-body py-0">
 										<!--begin::Table-->
-										<div class="table-responsive">
+										
 											<table id="kt_datatable" class="table table-separate table-head-custom table-checkable">
 												<thead>
 													<tr class="text-uppercase">
@@ -95,7 +95,7 @@
 												</tbody>
 												
 											</table>
-										</div>
+										
 										<!--end::Table-->
 									</div>
 									<!--end::Body-->

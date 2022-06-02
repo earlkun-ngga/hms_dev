@@ -1,4 +1,3 @@
-
 <div class="d-flex flex-row flex-column-fluid container">
 <div class="main d-flex flex-column flex-row-fluid">
 
@@ -6,14 +5,16 @@
 		
 		<div class="row">
 			<div class="col">
-
 				<div class="card card-custom card-border gutter-b">
 									<!--begin::Header-->
 									<div class="card-header border-0 py-5">
 										<h3 class="card-title align-items-start flex-column">
                                             <a href="<?= base_url(); ?>Admin/drugs" class="btn btn-light-primary">ALL DRUG</a>
                                             <br>
-											<span class="card-label font-weight-bolder text-dark">DRUG : <?= $drug_data_master['drug_name']; ?> (<?= $drug_data_master['drug_id']; ?>) STOCK</span>
+											<span class="card-label font-weight-bolder text-dark"><?= $drug_data_master['drug_name']; ?> #<?= $drug_data_master['drug_id']; ?> | TOTAL STOCK :
+
+                                                <?= $count_stock_drug['total_stock']; ?>
+                                             </span>
 											
 										</h3>
 										<div class="card-toolbar">
@@ -24,7 +25,7 @@
 									<!--begin::Body-->
 									<div class="card-body py-0">
 										<!--begin::Table-->
-										<div class="table-responsive">
+										<
 											<table class="table table-head-custom table-vertical-center" id="table_doctor">
 												<thead>
 													<tr class="text-uppercase">
@@ -53,7 +54,7 @@
 												</tbody>
 												
 											</table>
-										</div>
+										
 										<!--end::Table-->
 									</div>
 									<!--end::Body-->

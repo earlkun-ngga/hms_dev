@@ -19,20 +19,20 @@
                                     <!--begin::Body-->
                                     <div class="card-body py-0">
                                         <!--begin::Table-->
-                                        <div class="table-responsive">
+                                       
                                             <table class="table" id="kt_datatable">
                                                 <thead>
                                                     <tr class="text-uppercase">
-                                                        <th style="min-width: 150px"><center>FOLLOW UP DATE</center></th>
-                                                        <th style="min-width: 120px"><center>PATIENT</center></th>
-                                                        <th style="min-width: 120px"><center>DOCTOR</center></th>
-                                                        <th style="min-width: 120px"><center>DETAIL</center></th>
-                                                        <th style="min-width: 120px"><center>PRINT</center></th>
-                                                        <th style="min-width: 120px"><center>RECIPE</center></th>
-                                                        <th style="min-width: 120px"><center>INVOICE</center></th>
-                                                        <th style="min-width: 120px"><center>SUBMIT</center></th>
-                                                        <th style="min-width: 120px"><center>EDIT</center></th>
-                                                        <th style="min-width: 120px"><center>DELETE</center></th>
+                                                        <th ><center>FOLLOW UP DATE</center></th>
+                                                        <th ><center>PATIENT</center></th>
+                                                        <th ><center>DOCTOR</center></th>
+                                                        <th><center>DETAIL</center></th>
+                                                        <th><center>PRINT</center></th>
+                                                        <th><center>RECIPE</center></th>
+                                                        <th><center>INVOICE</center></th>
+                                                        <th><center>SUBMIT</center></th>
+                                                        <th><center>EDIT</center></th>
+                                                        <th><center>DELETE</center></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -170,7 +170,7 @@
                                                 </tbody>
                                              
                                             </table>
-                                        </div>
+                                     
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Body-->
@@ -319,7 +319,7 @@
                             <br>
                             <div class="row">
                             <div class="col-6">
-                                <b>Appointment Date : </b>6 January 2022
+                                <b>Appointment Date : </b>
                                 <br>
                                 <b>Instruction : </b>
                                 <br>
@@ -452,7 +452,7 @@
                             <br>
                             <div class="row">
                             <div class="col-6">
-                                <b>Appointment Date : </b>6 January 2022
+                                <b>Appointment Date : </b>
                                 <br>
                                 <b>Instruction : </b>
                                 <br>

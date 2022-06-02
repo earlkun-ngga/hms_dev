@@ -22,7 +22,7 @@
 									<!--begin::Body-->
 									<div class="card-body py-0">
 										<!--begin::Table-->
-										<div class="table-responsive">
+										
 											<table class="table table-head-custom table-vertical-center" id="table_doctor">
 												<thead>
 													<tr class="text-uppercase">
@@ -84,8 +84,7 @@
 													<?php } ?>
 												</tbody>
 											</table>
-										</div>
-										<!--end::Table-->
+									<!--end::Table-->
 									</div>
 									<!--end::Body-->
 								</div>

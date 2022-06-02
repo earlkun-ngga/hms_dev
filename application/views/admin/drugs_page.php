@@ -22,18 +22,18 @@
 									<!--begin::Body-->
 									<div class="card-body py-0">
 										<!--begin::Table-->
-										<div class="table-responsive">
+									
 											<table class="table table-head-custom table-vertical-center" id="table_doctor">
 												<thead>
 													<tr class="text-uppercase">
 														
-														<th class="pl-0" style="min-width: 100px">DRUG ID</th>
-														<th style="min-width: 120px">DRUG NAME</th>
-														<th style="min-width: 150px">SPEC</th>
-														<th style="min-width: 130px">CATEGORY</th>
-														<th style="min-width: 130px">STOCK QTY</th>
-														<th style="min-width: 130px">UNIT</th>
-														<th style="min-width: 130px">PRICE</th>
+														<th>DRUG ID</th>
+														<th >DRUG NAME</th>
+														<th >SPEC</th>
+														<th >CATEGORY</th>
+														<th >STOCK QTY</th>
+														<th >UNIT</th>
+														<th >PRICE</th>
 														<th class="">ACTION</th>
 													</tr>
 												</thead>
@@ -88,15 +88,13 @@
 												</tbody>
 												
 											</table>
-										</div>
+										
 										<!--end::Table-->
 									</div>
 									<!--end::Body-->
 								</div>
 			</div>
 		</div>
-
-
 	</div>
 </div>
 

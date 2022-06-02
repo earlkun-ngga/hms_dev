@@ -39,9 +39,7 @@
 		    </g>
 		</svg><!--end::Svg Icon--></span>
 								</center>
-
 												</div>
-
 												<div class="col-8"> <h1><div id="val_cls"></div></h1>CLS SHEET</div>
 											</div>
 										</div>
@@ -59,9 +57,7 @@
 		    </g>
 		</svg><!--end::Svg Icon--></span>
 								</center>
-
 												</div>
-
 												<div class="col-8"> <h1><div id="val_rcp"></div></h1>RECIPE</div>
 											</div>
 										</div>
@@ -81,29 +77,23 @@
 								    </g>
 								</svg><!--end::Svg Icon--></span>
 																</center>
-
 												</div>
-
 												<div class="col-8"> <h1>0</h1>RECEIPT</div>
 											</div>
 										</div>
 									</div>
-
-
 								</div>
-
 								<hr>
 								<div class="row">
 									<div class="col">
 										<div class="card bg-danger px-5 py-2" style="width: 50%;">
-											<h4><font color="white">LIST CONDITION STOCK DRUGS AND EXPIRED DATE</font></h4>
+							<h4><font color="white">The batches of medicine will expire in the next 30 days</font></h4>
 										</div>
 									</div>
 								</div>
 								<br>
 								<div class="row">
 									<div class="col">
-
 										<table class="table" id="kt_datatable">
 											<thead>
 											<tr>
@@ -123,25 +113,15 @@
 												<td><?= $ded['coupon_code']; ?></td>
 												<td><?= $ded['lot_code']; ?></td>
 											</tr>
-										<?php } ?>
-											</tbody>
-																						
+											<?php } ?>
+											</tbody>									
 										</table>
-
 									</div>
 								</div>
-
 							</div>
-							<!--end::Content-->
 						</div>
-						<!--begin::Content Wrapper-->
 					</div>
-					<!--end::Container-->
-
-
 <script>
-	
-
 	$.ajax({
 		method: 'GET',
 		url: `<?= base_url(); ?>Api/get_count_patient`,
@@ -150,11 +130,6 @@
 			$('#val_pat').append(angka_patient);
 		}
 	});
-
-
-
-
-
 	$.ajax({
 		method: 'GET',
 		url: `<?= base_url(); ?>Api/get_count_cls`,
@@ -163,7 +138,6 @@
 			$('#val_cls').append(angka_cls);
 		}
 	});
-
 	$.ajax({
 		method: 'GET',
 		url: `<?= base_url(); ?>Api/get_count_recipe`,
@@ -172,7 +146,4 @@
 			$('#val_rcp').append(angka_rcp);
 		}
 	});
-
-
-
 </script>

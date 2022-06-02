@@ -34,7 +34,7 @@
 		public function index() {
 
 			$head['big'] = '1';
-			$data['drugs_expired_date'] = $this->DrugStock_Model->get_all_join_drug_master();
+			$data['drugs_expired_date'] = $this->DrugStock_Model->get_expired_30d_join_drug_master();
 			$this->load->view('admin/template/header', $head);
 
 			$this->load->view('admin/body', $data);
@@ -172,6 +172,7 @@
 			$data['id_drug'] = $id;
 			$data['drug_stock_item'] = $this->DrugStock_Model->get_all_by_id_drug($id);
 			$data['drug_data_master'] = $this->Drug_Model->get_drug_by_id($id);
+			$data['count_stock_drug'] = $this->DrugStock_Model->get_count_stock_by_id_drug($id);
 			$data['data_drug'] = $this->Drug_Model->get_all_drug();
 			$this->load->view('admin/template/header', $head);
 			$this->load->view('admin/drug_stock_list_view', $data);
