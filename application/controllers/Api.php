@@ -17,6 +17,7 @@
 			$this->load->model('ItemMasterCheckingSheet_Model');
 			$this->load->model('MasterRecipe_Model');
 			$this->load->model('DrugStock_Model');
+			$this->load->model('NotePatientProgressDisease_Model');
 
 
 
@@ -69,6 +70,19 @@
 			echo json_encode($this->ItemMasterCheckingSheet_Model->get_all_by_id_master_checking($id));
 		}
 
+
+		//note_patient_prog_dis
+
+		public function insert_note_patient_progress_disease()
+		{
+			$this->NotePatientProgressDisease_Model->insert_new_nppd($_POST);
+			// var_dump($_POST);
+		}
+
+		public function get_all_note_patient_prog_dis($id)
+		{
+			echo json_encode($this->NotePatientProgressDisease_Model->get_all_by_id_patient($id));
+		}
 
 
 		//COUNTING DATA

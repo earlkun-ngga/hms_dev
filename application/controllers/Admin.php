@@ -26,21 +26,15 @@
 			$this->load->model('MasterCheckingSheet_Model');
 			$this->load->model('ItemMasterCheckingSheet_Model');
 			$this->load->model('DrugStock_Model');
-			
-
 			}
 
 		// HALAMAN DASHBOARD
 		public function index() {
-
 			$head['big'] = '1';
 			$data['drugs_expired_date'] = $this->DrugStock_Model->get_expired_30d_join_drug_master();
 			$this->load->view('admin/template/header', $head);
-
 			$this->load->view('admin/body', $data);
-			
 			$this->load->view('admin/template/footer');
-			
 		}
 
 		//APOINTMENT
@@ -222,6 +216,11 @@
 			$this->load->view ('admin/template/header', $head);
 			$this->load->view ('admin/list_recipe_patient', $data);
 			$this->load->view ('admin/template/footer');
+		}
+
+		public function delete_recipe($id)
+		{
+			
 		}
 
 		public function doctor_manage_page() {

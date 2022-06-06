@@ -24,10 +24,18 @@
 
 		public function get_all_apointment_with_join()
 		{
-			$this->db->select('appointment.id, doctor.doctor_name, patient.patient_name, appointment_date, appointment_time, appointment_id, id_doctor, id_patient');
+			$this->db->select('appointment.id, 
+				doctor.doctor_name, 
+				patient.patient_name, 
+				appointment_date, 
+				appointment_time, 
+				appointment_id,
+				appointment.status, 
+				id_doctor, 
+				id_patient'
+			);
 			$this->db->join('doctor','doctor.id = appointment.id_doctor');
 			$this->db->join('patient','patient.id = appointment.id_patient');
-			$this->db->where('appointment.status', '0');
 			$this->db->order_by('appointment_date', 'asc');
 			return $this->db->get($this->table)->result_array();
 		}
@@ -35,33 +43,57 @@
 
 		public function get_all_appointment_with_join_today()
 		{
-			$this->db->select('appointment.id, doctor.doctor_name, patient.patient_name, appointment_date, appointment_time, appointment_id, id_doctor, id_patient');
+			$this->db->select('appointment.id, 
+				doctor.doctor_name, 
+				patient.patient_name, 
+				appointment_date, 
+				appointment_time, 
+				appointment_id,
+				appointment.status, 
+				id_doctor, 
+				id_patient'
+			);
 			$this->db->join('doctor','doctor.id = appointment.id_doctor');
 			$this->db->join('patient','patient.id = appointment.id_patient');
 			$this->db->where('appointment_date', date('Y-m-d'));
-			$this->db->where('appointment.status', '0');
 			$this->db->order_by('appointment_date', 'asc');
 			return $this->db->get($this->table)->result_array();
 		}
 
 		public function get_all_appointment_with_join_this_month()
 		{
-			$this->db->select('appointment.id, doctor.doctor_name, patient.patient_name, appointment_date, appointment_time, appointment_id, id_doctor, id_patient');
+			$this->db->select('appointment.id, 
+				doctor.doctor_name, 
+				patient.patient_name, 
+				appointment_date, 
+				appointment_time, 
+				appointment_id,
+				appointment.status, 
+				id_doctor, 
+				id_patient'
+			);
 			$this->db->join('doctor','doctor.id = appointment.id_doctor');
 			$this->db->join('patient','patient.id = appointment.id_patient');
 			$this->db->where('MONTH(appointment_date)', date('m'));
-			$this->db->where('appointment.status', '0');
 			$this->db->order_by('appointment_date', 'asc');
 			return $this->db->get($this->table)->result_array();
 		}
 
 			public function get_all_appointment_with_join_expired()
 		{
-			$this->db->select('appointment.id, doctor.doctor_name, patient.patient_name, appointment_date, appointment_time, appointment_id, id_doctor, id_patient');
+			$this->db->select('appointment.id, 
+				doctor.doctor_name, 
+				patient.patient_name, 
+				appointment_date, 
+				appointment_time, 
+				appointment_id,
+				appointment.status, 
+				id_doctor, 
+				id_patient'
+			);
 			$this->db->join('doctor','doctor.id = appointment.id_doctor');
 			$this->db->join('patient','patient.id = appointment.id_patient');
 			$this->db->where('appointment_date <', date('Y-m-d'));
-			$this->db->where('appointment.status', '0');
 			$this->db->order_by('appointment_date', 'asc');
 			return $this->db->get($this->table)->result_array();
 		}

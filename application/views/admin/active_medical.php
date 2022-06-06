@@ -79,7 +79,9 @@
                                                                 '<?= $da['id_patient']; ?>',
                                                                 '<?= $da['patient_name']; ?>',
                                                                 '<?= $da['phone_number_1']; ?>',
-                                                                '<?= $da['sex']; ?>'
+                                                                '<?= $da['sex']; ?>',
+                                                                '<?= $da['birth_date']; ?>',
+                                                                '<?= $da['appointment_date']; ?>'
                                                             )" data-target="#modal_recipe">
                                                               <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -131,7 +133,9 @@
                                                                 '<?= $da['patient_name']; ?>',
                                                                 '<?= $da['phone_number_1']; ?>',
                                                                 '<?= $da['sex']; ?>',
-                                                                '<?= $da['id']; ?>'
+                                                                '<?= $da['id']; ?>',
+                                                                '<?= $da['birth_date']; ?>',
+                                                                '<?= $da['appointment_date']; ?>'
 
                                                             )" data-toggle="modal" data-target="#modal_edit">
                                                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Design\Edit.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -230,7 +234,7 @@
 
                     <div class="col-6 card shadow-sm p-3 mb-5 bg-white rounded">
                         <br>    
-                        <center><h4>Recipe Drugs</h4>
+                        <center><h4>RECIPE DRUGS</h4>
                            
                             <hr></center>
                              <form method="post" action="<?= base_url(); ?>admin/proses_input_recipe">
@@ -258,7 +262,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>Birth Date : </b></td>
-                                            <td ></td>
+                                            <td id="rc_bd"></td>
                                         </tr>
                                     </table>
                                     </div>
@@ -280,17 +284,17 @@
                                 </div>
                             </div>
                              
+                            <b>Drugs</b>
                             <hr>
-                           
                             <div id="col_form_drug">
                                 <div class="row mb-2" id="the_row">
                                    
                                     <div class="col-8">
                                         <div class="row">
                                             <div class="col-8">
-                                                <select name="drug_id[]" class="form-control">
+                                                <select style="width: 100%;" name="drug_id[]" class="form-control">
                                                     <?php foreach ($data_drug as $dd) {  ?>
-                                                        <option value="<?= $dd['id']; ?>"><?= $dd['id']; ?> | <?= $dd['drug_name']; ?></option>
+                                                        <option value="<?= $dd['id']; ?>"><?= $dd['drug_name']; ?></option>
                                                     <?php } ?>
                                                 </select>
                                         </div>
@@ -319,9 +323,9 @@
                             <br>
                             <div class="row">
                             <div class="col-6">
-                                <b>Appointment Date : </b>
+                                <b>Appointment Date</b><div id="rc_appointment_date"></div>
                                 <br>
-                                <b>Instruction : </b>
+                                <b>Instruction</b>
                                 <br>
                                 <textarea name="instruction"  class="form-control"></textarea>
 
@@ -329,7 +333,7 @@
 
                             <div class="col-6">
                                <center>
-                                   <i><?= date('d-M-Y'); ?></i>
+                                   <i><?= date('d M Y'); ?></i>
                                    <br>
                                    Created
                                    <br>
@@ -399,7 +403,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Checking Paper</h5>
+                <h5 class="modal-title" id="exampleModalLabel">CHECKING PAPER</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -409,7 +413,7 @@
 
                     <div class="col-6 card shadow-sm p-3 mb-5 bg-white rounded">
                         <br>    
-                        <center><h4>Checking Paper Patient</h4>
+                        <center><h4>CHECKING PAPER PATIENT</h4>
                             <hr></center>
 
                             <table>
@@ -452,15 +456,15 @@
                             <br>
                             <div class="row">
                             <div class="col-6">
-                                <b>Appointment Date : </b>
+                                <b>Appointment Date</b><div id="cls_appodate"></div>
                                 <br>
-                                <b>Instruction : </b>
+                                <b>Instruction</b>
                                 <br>
                                 <textarea name="instruction" class="form-control"></textarea>
                             </div>
                             <div class="col-6">
                                <center>
-                                   <i>8 Mei 2022</i>
+                                   <i><?= date('d M Y'); ?></i>
                                    <br>
                                    Created
                                    <br>
@@ -480,19 +484,50 @@
                         <div class="row">
                             <div class="mx-1 col card">
                                 <br>
-                                <b>Disease Progression</b>
+                                <div class="row">
+                                    <div class="col-8"><b><center>Disease Progression</center></b></div>
+
+                                    <div class="col-2"><a onclick="add_form_dis_prog()" id="btn_pls_dis_prog" href="#" class="btn btn-light-primary">+</a></div>
+                                </div>
+                                   <!-- LASTCODE2 -->
+                                <div id="form_input_dis_prog">
+                                    <br>
+                                    <div class="row">
+                                        <input type="hidden" id="id_pat_dis_prog">
+                                        <div class="col-12"><input id="txt_dis_prog" type="text" class="form-control" /></div>
+                                     
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                <div class="col">
+                               <center>
+                                   <a href="#" onclick="save_form_dis_prog()" class="btn btn-success">Save</a>
+                               </center>
+                        </div>
+                        <div class="col">
+                            <center>
+                               <a href="#" onclick="cancel_form_dis_prog()" class="btn btn-light-danger">Cancel</a>
+                        </center>
+                        </div>
+                                    </div>
+                                </div>
+                                
                                 <hr>
+                                <div id="item_dis_prog" style=" height: 100px; overflow-y: scroll; overflow-x: hidden; scrollbar-width: thin;">
+                                
+                               
+                                </div>
                             </div>
                             <div class="mx-1 col card">
                                 <br>
-                                <b>File</b>
+                                <div class="row">
+                                    <div class="col-8"><b><center>File</center></b></div>
+
+                                    <div class="col-2"><a onclick="" id="" href="#" class="btn btn-light-primary">+</a></div>
+                                </div>
                                 <hr>
                             </div>
-                            <div class="mx-1 col card">
-                                <br>
-                                <b>Life Check</b>
-                                <hr>
-                            </div>
+                           
                         </div>
                         <br>
                          <div class="row">
@@ -500,7 +535,7 @@
                                 <br>
                                 <b>History</b>
                                 <hr>
-                               <div id="idhistory">
+                               <div id="idhistory" style=" height: 100px; overflow-y: scroll; overflow-x: hidden; scrollbar-width: thin;">
                                    
 
                                </div>
@@ -508,15 +543,38 @@
                             </div>
                             <div class="mx-1 col card">
                                 <br>
-                                <b>Group</b>
+                                <div class="row">
+                                    <div class="col-8"><b><center>Group</center></b></div>
+
+                                    <div class="col-2"><a onclick="" id="" href="#" class="btn btn-light-primary">+</a></div>
+                                </div>
                                 <hr>
                             </div>
+                          
+                        </div>
+                        <br>
+                        <div class="row">
+
                             <div class="mx-1 col card">
                                 <br>
-                                <b>Category</b>
+                                <div class="row">
+                                    <div class="col-8"><b><center>Life Check</center></b></div>
+
+                                    <div class="col-2"><a onclick="" id="" href="#" class="btn btn-light-primary">+</a></div>
+                                </div>
+                                <hr>
+                            </div> 
+                            <div class="mx-1 col card">
+                                <br>
+                                <div class="row">
+                                    <div class="col-8"><b><center>Category</center></b></div>
+
+                                    <div class="col-2"><a onclick="" id="" href="#" class="btn btn-light-primary">+</a></div>
+                                </div>
                                 <hr>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -584,9 +642,7 @@
                 </div>
 
                 <hr>
-
                 <div class="row">
-
                     <div class="col-2"></div>
                     <div class="col-4">
                         <b>
@@ -631,10 +687,13 @@
 
 
 
-
+<!-- LASTCODE2 -->
 <script type="text/javascript">
 
     $('#form_input_disesae_progress').hide();
+    $('#form_input_dis_prog').hide();
+
+
 
 
 
@@ -652,7 +711,7 @@
                 // console.log(data_real.length);
            
                  for(var i = 0; i < data_real.length; i++) { 
-                 var content = `   <div class="card">
+                 var content = `   <div class="card mr-2">
                                     <div class="row px-1 py-1">
                                         <div class="col-8"><center><div style="font-size : 12px;">${data_real[i]['created_date']}</div></center></div>
                                         <div class="col-2"><a data-toggle="modal" onclick="detail_cls_by_id('${data_real[i]['id']}')" data-target="#detail_cls"  href="#">
@@ -689,17 +748,120 @@
     }
 
 
+
+    //DISESAE PROGRESS
     function show_form_disesae_progress()
     {
         $('#form_input_disesae_progress').show();
     }
 
-
-    function popup_edit_cls(id, name, phone, sex, id_medrec)
+    function get_all_note_dis_prog(id)
     {
 
+         $.ajax({
+            url: `<?= base_url(); ?>Api/get_all_note_patient_prog_dis/${id}`,
+            method: 'GET',
+            success: function(data)
+            {
+
+                var data_real = JSON.parse(data);
+                for(var i = 0; i < data_real.length; i++)
+            {
+            var content_card = `    
+                                 <div class="card mr-1">
+                                    <div class="row px-1 py-1">
+                                        <div class="col-8"><center><div style="font-size : 12px;"><b>${data_real[i]['created_date']}</b></div></center></div>
+                                        <div class="col-2"><span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Design\Edit.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "/>
+                                    <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"/>
+                                </g>
+                            </svg><!--end::Svg Icon--></span></div>
+                                                                </div>
+
+                                    <div class="row px-1 py-1">
+                                        <div class="col-8"><center><div style="font-size : 12px;">${data_real[i]['valuetext']}</div></center></div>
+                                        <div class="col-2"><span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\General\Trash.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"/>
+                            <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"/>
+                            <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                        </g>
+                    </svg><!--end::Svg Icon--></span></div>
+                                    </div>
+                                </div><br>`;
+
+            $('#item_dis_prog').append(content_card);
+        }
+
+            }
+        });
+
+
+    }
+
+
+    function cancel_form_dis_prog() {
+        $('#btn_pls_dis_prog').show();
+        $('#form_input_dis_prog').hide();
+    }
+
+    function add_form_dis_prog(){
+        $('#btn_pls_dis_prog').hide();
+        $('#form_input_dis_prog').show();
+    }
+
+    function save_form_dis_prog()
+    {
+        console.log($('#txt_dis_prog').val());
+        console.log($('#id_pat_dis_prog').val());
+
+        var idpat = $('#id_pat_dis_prog').val();
+        var valtxt = $('#txt_dis_prog').val();
+
+        $.ajax({
+            url: `<?= base_url(); ?>Api/insert_note_patient_progress_disease`,
+            method: 'POST',
+            data: {
+                id_patient: idpat,
+                valuetext: valtxt
+            },
+            success: function(response)
+            {
+                console.log(response);
+
+        $('#form_input_dis_prog').hide();
+        $('#btn_pls_dis_prog').show();
+        $('#item_dis_prog').empty();
+        $('#item_dis_prog').append(`<br><div class="row"><div class="col"><center><div class="spinner"></div></center></div></div>`);
+        $('#item_dis_prog').empty();
+
+        get_all_note_dis_prog(idpat);
+
+        $('#txt_dis_prog').val('');
+            }
+        }); 
+    }
+
+
+    function popup_edit_cls(id, name, phone, sex, id_medrec, birth_date, appointment_date)
+    {
+
+
+        $('#id_pat_dis_prog').val(id);
+        $('#cls_birthdate').append('');
+        $('#cls_birthdate').append(birth_date);
+
         get_list_history(id);
-       
+        $('#item_dis_prog').empty();
+        get_all_note_dis_prog(id);
+
+
+        $('#cls_appodate').empty();
+        $('#cls_appodate').append(appointment_date);
+
+        
         $('#cls_name').empty();
         $('#cls_name').append(name);
 
@@ -708,9 +870,6 @@
 
         $('#cls_id_pat').val();
         $('#cls_id_pat').val(id);
-
-        
-
 
         $('#cls_id_medrec').val();
         $('#cls_id_medrec').val(id_medrec);
@@ -727,19 +886,19 @@
         $('#cls_sex').append('Female');
         }
 
-
-
-
-   
-
-     
-
     }
 
     
-    function popup_recipe(id, name, phone, sex)
+    function popup_recipe(id, name, phone, sex, bd, appointment_date)
     {
 
+        console.log(appointment_date);
+
+        $('#rc_bd').empty();
+        $('#rc_bd').append(bd);
+
+        $('#rc_appointment_date').empty();
+        $('#rc_appointment_date').append(appointment_date);
        
         $('#rc_name').empty();
         $('#rc_name').append(name);
@@ -761,20 +920,10 @@
         $('#rc_sex').empty();
         $('#rc_sex').append('Female');
         }
-
-        // console.log(id);
-        // console.log(sex);
-
-     
-
     }
 
     function popup_detail(id, doctor_name, patient_name, date, blood_type, checks, diagnosis)
     {
-        // console.log(id);
-        // console.log(doctor_name);
-        // console.log(patient_name);
-
         $('#id_medrec').val(id);
         $('#doct_name').empty();
         $('#doct_name').val(doctor_name);
@@ -799,9 +948,9 @@
                                     <div class="col-8">
                                         <div class="row">
                                             <div class="col-8">
-                                                <select name="drug_id[]" class="form-control">
+                                                <select id="kt_select2_1" name="drug_id[]" class="form-control">
                                                     <?php foreach ($data_drug as $dd) {  ?>
-                                                        <option value="<?= $dd['id']; ?>"><?= $dd['id']; ?> | <?= $dd['drug_name']; ?></option>
+                                                        <option value="<?= $dd['id']; ?>"><?= $dd['drug_name']; ?></option>
                                                     <?php } ?>
                                                 </select>
                                         </div>
@@ -1096,9 +1245,205 @@
    
     }
 
+
+
+
      $(document).on('click', '#removeRow', function () {
         $(this).closest('#the_row').remove();
     });
+
+
+        // Class definition
+var KTSelect2 = function() {
+ // Private functions
+ var demos = function() {
+  // basic
+  $('#kt_select2_1').select2({
+   placeholder: "Select a state"
+  });
+
+  $('#doctor_select2').select2({
+   placeholder: "Select a state"
+  });
+
+  // nested
+  $('#kt_select2_2').select2({
+   placeholder: "Select a state"
+  });
+
+  // multi select
+  $('#kt_select2_3').select2({
+   placeholder: "Select a state",
+  });
+
+  // basic
+  $('#kt_select2_4').select2({
+   placeholder: "Select a state",
+   allowClear: true
+  });
+
+  // loading data from array
+  var data = [{
+   id: 0,
+   text: 'Enhancement'
+  }, {
+   id: 1,
+   text: 'Bug'
+  }, {
+   id: 2,
+   text: 'Duplicate'
+  }, {
+   id: 3,
+   text: 'Invalid'
+  }, {
+   id: 4,
+   text: 'Wontfix'
+  }];
+
+  $('#kt_select2_5').select2({
+   placeholder: "Select a value",
+   data: data
+  });
+
+  // loading remote data
+
+  function formatRepo(repo) {
+   if (repo.loading) return repo.text;
+   var markup = "<div class='select2-result-repository clearfix'>" +
+    "<div class='select2-result-repository__meta'>" +
+    "<div class='select2-result-repository__title'>" + repo.full_name + "</div>";
+   if (repo.description) {
+    markup += "<div class='select2-result-repository__description'>" + repo.description + "</div>";
+   }
+   markup += "<div class='select2-result-repository__statistics'>" +
+    "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
+    "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
+    "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
+    "</div>" +
+    "</div></div>";
+   return markup;
+  }
+
+  function formatRepoSelection(repo) {
+   return repo.full_name || repo.text;
+  }
+
+  $("#kt_select2_6").select2({
+   placeholder: "Search for git repositories",
+   allowClear: true,
+   ajax: {
+    url: "https://api.github.com/search/repositories",
+    dataType: 'json',
+    delay: 250,
+    data: function(params) {
+     return {
+      q: params.term, // search term
+      page: params.page
+     };
+    },
+    processResults: function(data, params) {
+     // parse the results into the format expected by Select2
+     // since we are using custom formatting functions we do not need to
+     // alter the remote JSON data, except to indicate that infinite
+     // scrolling can be used
+     params.page = params.page || 1;
+
+     return {
+      results: data.items,
+      pagination: {
+       more: (params.page * 30) < data.total_count
+      }
+     };
+    },
+    cache: true
+   },
+   escapeMarkup: function(markup) {
+    return markup;
+   }, // let our custom formatter work
+   minimumInputLength: 1,
+   templateResult: formatRepo, // omitted for brevity, see the source of this page
+   templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+  });
+
+  // custom styles
+
+  // tagging support
+  $('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
+   placeholder: "Select an option",
+  });
+
+  // disabled mode
+  $('#kt_select2_7').select2({
+   placeholder: "Select an option"
+  });
+
+  // disabled results
+  $('#kt_select2_8').select2({
+   placeholder: "Select an option"
+  });
+
+  // limiting the number of selections
+  $('#kt_select2_9').select2({
+   placeholder: "Select an option",
+   maximumSelectionLength: 2
+  });
+
+  // hiding the search box
+  $('#kt_select2_10').select2({
+   placeholder: "Select an option",
+   minimumResultsForSearch: Infinity
+  });
+
+  // tagging support
+  $('#kt_select2_11').select2({
+   placeholder: "Add a tag",
+   tags: true
+  });
+
+  // disabled results
+  $('.kt-select2-general').select2({
+   placeholder: "Select an option"
+  });
+ }
+
+ var modalDemos = function() {
+  $('#kt_select2_modal').on('shown.bs.modal', function () {
+   // basic
+   $('#kt_select2_1_modal').select2({
+    placeholder: "Select a state"
+   });
+
+   // nested
+   $('#kt_select2_2_modal').select2({
+    placeholder: "Select a state"
+   });
+
+   // multi select
+   $('#kt_select2_3_modal').select2({
+    placeholder: "Select a state",
+   });
+
+   // basic
+   $('#kt_select2_4_modal').select2({
+    placeholder: "Select a state",
+    allowClear: true
+   });
+  });
+ }
+
+ // Public functions
+ return {
+  init: function() {
+   demos();
+   modalDemos();
+  }
+ };
+}();
+
+// Initialization
+jQuery(document).ready(function() {
+ KTSelect2.init();
+});
 
 </script>
 

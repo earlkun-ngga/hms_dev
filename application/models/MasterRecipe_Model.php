@@ -40,6 +40,13 @@
 
 		}
 
+		public function delete_recipe_by_id($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete($this->table);
+			return $this->db->affected_rows();
+		}
+
 
 
 		public function get_count()

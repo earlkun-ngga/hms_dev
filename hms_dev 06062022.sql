@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jun 2022 pada 10.07
+-- Waktu pembuatan: 06 Jun 2022 pada 10.44
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -52,7 +52,8 @@ INSERT INTO `appointment` (`id`, `id_doctor`, `id_patient`, `appointment_id`, `a
 (53, 22, 1019, 'AP20220520050040', '2022-05-21', '00:00', 0, ''),
 (54, 22, 1019, 'AP20220520050121', '2022-05-24', '00:00', 1, ''),
 (55, 22, 1019, 'AP20220520050134', '2022-06-09', '00:00', 0, ''),
-(56, 22, 1019, 'AP20220520050142', '2022-06-10', '00:00', 0, '');
+(56, 22, 1019, 'AP20220520050142', '2022-06-10', '00:00', 0, ''),
+(57, 16, 1021, 'AP20220606051203', '2022-06-06', '4:45', 1, '');
 
 -- --------------------------------------------------------
 
@@ -318,7 +319,9 @@ INSERT INTO `item_checking_sheet_patient` (`id`, `id_master_checking_sheet_patie
 (6, 5, 6, 'MRI Test', 1),
 (8, 7, 5, 'oke', 1),
 (9, 7, 3, 'oke', 1),
-(10, 7, 1, 'oke', 1);
+(10, 7, 1, 'oke', 1),
+(11, 8, 1, '1', 1),
+(12, 10, 5, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -359,7 +362,10 @@ CREATE TABLE `master_checking_sheet_patient` (
 INSERT INTO `master_checking_sheet_patient` (`id`, `cs_id`, `id_patient`, `id_medical_record`, `diagnostic`, `instruction`, `place_test`, `created_date`) VALUES
 (4, 'CLS220519090335', 1011, 11, 'Sakit Kepala', 'Sedang Pengecekan', 'Rumah Sakit', '2022-05-19'),
 (5, 'CLS220519094549', 1010, 12, 'Kanker', 'Must be check now !', 'Depok', '2022-05-19'),
-(7, 'CLS220530045810', 1011, 11, 'Kronis Head', 'test', 'Placetest', '2022-05-30');
+(7, 'CLS220530045810', 1011, 11, 'Kronis Head', 'test', 'Placetest', '2022-05-30'),
+(8, 'CLS220603060430', 1011, 11, 'Sembuhkan', '1', 'Sembuhin lah', '2022-06-03'),
+(9, 'CLS220603111140', 1011, 11, '', '', '', '2022-06-03'),
+(10, 'CLS220606054820', 1021, 15, 'Kepala Berdarah', 'Test Now', 'Di Lokasi', '2022-06-06');
 
 -- --------------------------------------------------------
 
@@ -413,7 +419,58 @@ CREATE TABLE `medical_record` (
 INSERT INTO `medical_record` (`id`, `id_doctor`, `id_patient`, `id_appointment`, `medical_record_id`, `diagnosis`, `checks`, `status`, `created_date`) VALUES
 (11, 22, 1011, 47, NULL, NULL, NULL, 0, '2022-05-19'),
 (12, 22, 1010, 48, NULL, NULL, NULL, 0, '2022-05-19'),
-(14, 22, 1019, 54, NULL, NULL, NULL, 0, '2022-05-24');
+(14, 22, 1019, 54, NULL, NULL, NULL, 0, '2022-05-24'),
+(15, 16, 1021, 57, NULL, NULL, NULL, 0, '2022-06-06');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `note_patient_disease_progress`
+--
+
+CREATE TABLE `note_patient_disease_progress` (
+  `id` int(100) NOT NULL,
+  `id_patient` int(10) DEFAULT NULL,
+  `valuetext` text DEFAULT NULL,
+  `created_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `note_patient_disease_progress`
+--
+
+INSERT INTO `note_patient_disease_progress` (`id`, `id_patient`, `valuetext`, `created_date`) VALUES
+(1, 1011, 'Angga', '2022-06-03'),
+(2, 1011, 'Sayang%20aku%20kok', '2022-06-03'),
+(3, 1011, 'ASDSAAS', '2022-06-03'),
+(5, 1019, 'Sekarang dah Sehat', '2022-06-03'),
+(6, 1010, 'Okay', '2022-06-03'),
+(7, 1010, 'Okay', '2022-06-03'),
+(8, 1010, 'Okay Sekali', '2022-06-03'),
+(9, 1011, 'Siip Mantap', '2022-06-03'),
+(10, 1019, 'Baik', '2022-06-03'),
+(11, 1019, 'Bagus', '2022-06-03'),
+(12, 1011, 'oke deh', '2022-06-03'),
+(13, 1011, 'bagus', '2022-06-03'),
+(14, 1019, 'Saya Suka', '2022-06-03'),
+(15, 1011, 'Indah di lihat', '2022-06-03'),
+(16, 1011, 'Sekarang dah Sehat', '2022-06-03'),
+(17, 1019, 'Diam Anda', '2022-06-03'),
+(18, 1011, 'Bisa Selonjoran Sekarang mah !', '2022-06-03'),
+(19, 1010, 'Baik Sekali anda !', '2022-06-03');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `note_patient_group`
+--
+
+CREATE TABLE `note_patient_group` (
+  `id` int(100) NOT NULL,
+  `id_patient` int(10) DEFAULT NULL,
+  `valuetextgroup` text DEFAULT NULL,
+  `created_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -446,7 +503,8 @@ INSERT INTO `patient` (`id`, `patient_id`, `patient_name`, `sex`, `birth_date`, 
 (1015, 'P220418034458', 'Andrianto', 1, NULL, 'AB', 'Ok', '021021021', 'ok@Pop.com', '2022-04-18'),
 (1017, 'P220418034535', 'Ridwan Malik', 2, '0000-00-00', 'A', 'dassda', '02445454', 'megiccard@a.com', '2022-04-18'),
 (1019, 'P220418034637', 'Bob Mama', 1, '1976-04-20', 'A', 'asdsdasda', '12121212121', 'oasdsa@oasdasdk.com', '2022-04-18'),
-(1020, 'P220520061547', 'Ismail Dwi Nugroho', 1, '2000-01-10', 'A', 'Di Depkes', '0215522114', 'ismael22@gmail.com', '2022-05-20');
+(1020, 'P220520061547', 'Ismail Dwi Nugroho', 1, '2000-01-10', 'A', 'Di Depkes', '0215522114', 'ismael22@gmail.com', '2022-05-20'),
+(1021, 'P220606051111', 'Ajeng Anggriani', 2, '2000-02-06', 'AB', 'Tangerang Kota', '0210021021', 'ajeng@go.com', '2022-06-06');
 
 -- --------------------------------------------------------
 
@@ -555,6 +613,20 @@ ALTER TABLE `medical_record`
   ADD KEY `id_appointment` (`id_appointment`);
 
 --
+-- Indeks untuk tabel `note_patient_disease_progress`
+--
+ALTER TABLE `note_patient_disease_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_patient` (`id_patient`);
+
+--
+-- Indeks untuk tabel `note_patient_group`
+--
+ALTER TABLE `note_patient_group`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_patient` (`id_patient`);
+
+--
 -- Indeks untuk tabel `patient`
 --
 ALTER TABLE `patient`
@@ -576,7 +648,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT untuk tabel `checking`
@@ -606,7 +678,7 @@ ALTER TABLE `drug_stock`
 -- AUTO_INCREMENT untuk tabel `item_checking_sheet_patient`
 --
 ALTER TABLE `item_checking_sheet_patient`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `item_recipe_drug_patient`
@@ -618,7 +690,7 @@ ALTER TABLE `item_recipe_drug_patient`
 -- AUTO_INCREMENT untuk tabel `master_checking_sheet_patient`
 --
 ALTER TABLE `master_checking_sheet_patient`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_recipe_drug_patient`
@@ -630,13 +702,25 @@ ALTER TABLE `master_recipe_drug_patient`
 -- AUTO_INCREMENT untuk tabel `medical_record`
 --
 ALTER TABLE `medical_record`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `note_patient_disease_progress`
+--
+ALTER TABLE `note_patient_disease_progress`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT untuk tabel `note_patient_group`
+--
+ALTER TABLE `note_patient_group`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1021;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1022;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -696,6 +780,18 @@ ALTER TABLE `medical_record`
   ADD CONSTRAINT `medical_record_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `medical_record_ibfk_2` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `medical_record_ibfk_3` FOREIGN KEY (`id_appointment`) REFERENCES `appointment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `note_patient_disease_progress`
+--
+ALTER TABLE `note_patient_disease_progress`
+  ADD CONSTRAINT `note_patient_disease_progress_ibfk_1` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `note_patient_group`
+--
+ALTER TABLE `note_patient_group`
+  ADD CONSTRAINT `note_patient_group_ibfk_1` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

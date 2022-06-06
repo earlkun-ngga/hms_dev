@@ -268,7 +268,7 @@
 									<!--end::Item-->
 									<!--begin::Item-->
 									<li class="nav-item">
-										<a href="<?= base_url(); ?>admin/appointment" class="nav-link <?= ($big == '2') ? 'active' : ''; ?>">
+										<a href="<?= base_url(); ?>admin/appointment_today" class="nav-link <?= ($big == '2') ? 'active' : ''; ?>">
 											<span class="nav-title text-uppercase">APPOINTMENT</span>
 										
 										</a>

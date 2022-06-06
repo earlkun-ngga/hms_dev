@@ -49,8 +49,6 @@
 															'<?= $rcp['created_date']; ?>',
 															'<?= $rcp['recipe_id']; ?>',
 															'<?= $rcp['id']; ?>'
-
-
 															)"  data-toggle="modal" data-target="#add_form_doctor">
 															<center>
 													             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\Communication\Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -116,6 +114,7 @@
 														</td>
 														<td> 
 														<center>  
+															<a href="#" data-toggle="modal" data-target="#modal_hapus">
                                                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo11\dist/../src/media/svg/icons\General\Trash.svg-->
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -124,6 +123,7 @@
                                                             <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
                                                         </g>
                                                 		</svg><!--end::Svg Icon--></span>
+                                                		</a>
                                             	
                                             			</center>
                                         			</td>
@@ -142,6 +142,31 @@
 </div>
 </div>
 <!-- MODAL -->
+<div class="modal fade" id="modal_hapus" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">DETAIL RECIPE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+              
+           </div>
+               
+
+
+               <div class="modal-footer">
+                <button type="button" class="btn btn-light-success font-weight-bold" data-dismiss="modal">CANCEL</button>
+                <a href="#" class="btn btn-danger font-weight-bold" >DELETE</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="modal fade" id="add_form_doctor" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">

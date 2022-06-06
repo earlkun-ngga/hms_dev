@@ -41,9 +41,16 @@
                                                         <td><?= $da['doctor_name']; ?></td>
                                                         <td >
                                                         
-                                                       <?php if($da['appointment_date'] == date('Y-m-d')) {
+                                                       <?php 
 
 
+
+                                                       if($da['status'] == '1')
+                                                       {
+                                                            echo '<a class="btn btn-primary disabled">
+                                                            <b>SERVED</b></a>';
+                                                       } else {
+                                                         if($da['appointment_date'] == date('Y-m-d')) {
                                                             echo '<a href="'.base_url().'admin/appointment_fu/'.$da['id'].'/'.$da['id_doctor'].'/'.$da['id_patient'].'" class="btn btn-success">
                                                             <b>FOLLOW UP</b></a>'; 
                                                             
@@ -54,7 +61,10 @@
 
                                                             echo '<a class="btn btn-default disabled">
                                                             <b>NOT YET</b></a>';
-                                                            } ?>
+                                                            } 
+                                                       }
+                                                      
+                                                            ?>
                                         
 
                                                         </td>
