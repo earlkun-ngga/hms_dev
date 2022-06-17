@@ -22,16 +22,16 @@
 									<div class="card-body py-0">
 										<!--begin::Table-->
 										
-											<table id="kt_datatable" class="table table-separate table-head-custom table-checkable">
+											<table id="kt_datatable" class="table">
 												<thead>
 													<tr class="text-uppercase">
-														<th class="pl-0" style="min-width: 100px">PATIENT ID</th>
-														<th style="min-width: 120px">PATIENT NAME</th>
-														<th style="min-width: 150px">PHONE 1</th>
-														<th style="min-width: 150px">BLOOD TYPE</th>
-														<th style="min-width: 150px">ADDRESS</th>
-														<th style="min-width: 130px">SEX</th>
-														<th nowrap="nowrap">ACTION</th>
+														<th>PATIENT ID</th>
+														<th >PATIENT NAME</th>
+														<th >PHONE 1</th>
+														<th >BLOOD TYPE</th>
+														<th >ADDRESS</th>
+														<th >SEX</th>
+														<th >ACTION</th>
 													</tr>
 												</thead>
 												<tbody>

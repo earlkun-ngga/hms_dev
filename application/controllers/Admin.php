@@ -45,10 +45,10 @@
 
 			if($this->Appointment_Model->input_new_appointment($_POST)) {
 
-				echo '<script>window.location.replace("'.base_url().'admin/appointment");</script>';
+				echo '<script>window.location.replace("'.base_url().'admin/appointment_today");</script>';
 			} else {
 
-				echo '<script>window.location.replace("'.base_url().'admin/appointment");</script>';
+				echo '<script>window.location.replace("'.base_url().'admin/appointment_today");</script>';
 			}
 
 		}
@@ -334,10 +334,6 @@
 			
 
 			$id_master_recipe = $this->MasterRecipe_Model->input_data_master_recipe($_POST);
-
-
-
-
 			for($i = 0; $i < count($_POST['drug_id']); $i++)
 			{
 				$this->ItemMasterRecipe_Model->input_item_master_recipe($_POST['drug_id'][$i], $id_master_recipe, $_POST['qty_drug'][$i],
@@ -345,16 +341,9 @@
 			);
 
 			}
-
-			
 			echo '<script>window.location.replace("'.base_url().'admin/active_medical");</script>';
 
 		}
-
-
-
-
-
 
 		//PATIENT
 		public function patient_manage_page()

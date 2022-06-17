@@ -6,8 +6,9 @@ var KTDatatablesDataSourceHtml = function() {
 
 		// begin first table
 		table.DataTable({
-			responsive: true,
-			
+			responsive : true,
+		
+
 		});
 
 	};

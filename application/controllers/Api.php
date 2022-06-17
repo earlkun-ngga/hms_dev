@@ -18,12 +18,17 @@
 			$this->load->model('MasterRecipe_Model');
 			$this->load->model('DrugStock_Model');
 			$this->load->model('NotePatientProgressDisease_Model');
+			$this->load->model('MedicalRecord_model');
 
 
 
 
 		}
 
+		public function get_all_medrec_active()
+		{
+			echo json_encode($this->MedicalRecord_model->get_medical_record_active());
+		}
 
 		public function get_all_patient()
 		{

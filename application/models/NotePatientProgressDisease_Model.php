@@ -23,6 +23,7 @@
 		{
 			$this->db->where('id_patient', $id);
 			$this->db->order_by('id', 'desc');
+			
 			return $this->db->get($this->table)->result_array();
 		}
 

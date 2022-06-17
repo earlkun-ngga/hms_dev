@@ -18,8 +18,6 @@
 			$this->db->set('status', '0');
 			$this->db->insert($this->table);
 			return $this->db->affected_rows();
-
-
 		}
 
 
@@ -55,6 +53,7 @@
 			$this->db->join('doctor', 'doctor.id = medical_record.id_doctor');
 			$this->db->join('appointment', 'appointment.id = medical_record.id_appointment');
 			$this->db->where_not_in('medical_record.status', '2');
+			$this->db->order_by('created_date', 'desc');
 			return $this->db->get($this->table)->result_array();
 		}
 

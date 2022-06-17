@@ -40,7 +40,6 @@
 			return $this->db->get($this->table)->result_array();
 		}
 
-
 		public function get_all_appointment_with_join_today()
 		{
 			$this->db->select('appointment.id, 
@@ -59,7 +58,6 @@
 			$this->db->order_by('appointment_date', 'asc');
 			return $this->db->get($this->table)->result_array();
 		}
-
 		public function get_all_appointment_with_join_this_month()
 		{
 			$this->db->select('appointment.id, 
@@ -78,7 +76,6 @@
 			$this->db->order_by('appointment_date', 'asc');
 			return $this->db->get($this->table)->result_array();
 		}
-
 			public function get_all_appointment_with_join_expired()
 		{
 			$this->db->select('appointment.id, 

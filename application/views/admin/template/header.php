@@ -296,6 +296,12 @@
 											
 										</a>
 									</li>
+									<li class="nav-item">
+										<a href="<?= base_url(); ?>admin/patient_manage_page" class="nav-link <?= ($big == '6') ? 'active' : ''; ?>" >
+											<span class="nav-title text-uppercase">MASTER DATA</span>
+											
+										</a>
+									</li>
 									<!--end::Item-->
 								</ul>
 								

@@ -267,13 +267,6 @@
                                     </table>
                                     </div>
                                 </div>
-
-                                
-
-
-                                    
-                                    
-                             
                             <div class="row mt-3 mb-3">
                                 <div class="col">
                                     <b>Reason Checking</b><br>
@@ -398,7 +391,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="modal_edit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -410,14 +402,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-
                     <div class="col-6 card shadow-sm p-3 mb-5 bg-white rounded">
                         <br>    
                         <center><h4>CHECKING PAPER PATIENT</h4>
                             <hr></center>
-
                             <table>
-                                
                                 <tr>
                                     <td><b>Name</b></td>
                                     <td id="cls_name"></td>
@@ -431,25 +420,18 @@
                                     <td id="cls_birthdate"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4"> </td>
+                                    <td colspan="4"></td>
                                 </tr>
                             </table>
-                            
-                            
                             <form method="post" action="<?= base_url(); ?>admin/proses_input_checking_sheet_patient">
                                 <input type="hidden" name="id_patient"  id="cls_id_pat" value="" />
                                 <input type="hidden" name="id_medrec" id="cls_id_medrec" value="" />
                                 <input type="hidden" name="check_sheet_id" value="CLS<?= date('ymdhis'); ?>" />
-
-
-
                             <b>Diagnostic</b><br>
                             <input style="border-bottom: dotted 2px #c9c9c9; " name="diagnostic" type="text" class="form-control" placeholder="ex. Headache" />
                             <b>Place Test</b><br>
                             <input type="text" name="place_test" class="form-control" placeholder="..." /><br>
-                             
                             <div id="item_checking_form">
-                                
                             </div>
                             <br>
                             <center> <a href="#" onclick="addrowcheckingcolumn()" class="btn btn-success">Add Item</a></center>
@@ -473,14 +455,10 @@
                                    <br>
                                    <b>Name of Clinic</b>
                                </center>
-
                             </div>
-
                             </div>
                     </div>
-
                     <div class="col">
-                        
                         <div class="row">
                             <div class="mx-1 col card">
                                 <br>
@@ -489,7 +467,7 @@
 
                                     <div class="col-2"><a onclick="add_form_dis_prog()" id="btn_pls_dis_prog" href="#" class="btn btn-light-primary">+</a></div>
                                 </div>
-                                   <!-- LASTCODE2 -->
+                                   
                                 <div id="form_input_dis_prog">
                                     <br>
                                     <div class="row">
@@ -507,15 +485,12 @@
                         <div class="col">
                             <center>
                                <a href="#" onclick="cancel_form_dis_prog()" class="btn btn-light-danger">Cancel</a>
-                        </center>
+                            </center>
+                            </div>
                         </div>
-                                    </div>
                                 </div>
-                                
                                 <hr>
                                 <div id="item_dis_prog" style=" height: 100px; overflow-y: scroll; overflow-x: hidden; scrollbar-width: thin;">
-                                
-                               
                                 </div>
                             </div>
                             <div class="mx-1 col card">
@@ -527,7 +502,6 @@
                                 </div>
                                 <hr>
                             </div>
-                           
                         </div>
                         <br>
                          <div class="row">
@@ -536,25 +510,19 @@
                                 <b>History</b>
                                 <hr>
                                <div id="idhistory" style=" height: 100px; overflow-y: scroll; overflow-x: hidden; scrollbar-width: thin;">
-                                   
-
                                </div>
-
                             </div>
                             <div class="mx-1 col card">
                                 <br>
                                 <div class="row">
                                     <div class="col-8"><b><center>Group</center></b></div>
-
                                     <div class="col-2"><a onclick="" id="" href="#" class="btn btn-light-primary">+</a></div>
                                 </div>
                                 <hr>
                             </div>
-                          
                         </div>
                         <br>
                         <div class="row">
-
                             <div class="mx-1 col card">
                                 <br>
                                 <div class="row">
@@ -636,11 +604,7 @@
                 </div>
                 <br>
                 <div id="checking_item">
-                    
-
-
                 </div>
-
                 <hr>
                 <div class="row">
                     <div class="col-2"></div>
@@ -690,12 +654,9 @@
 <!-- LASTCODE2 -->
 <script type="text/javascript">
 
-    $('#form_input_disesae_progress').hide();
+   
     $('#form_input_dis_prog').hide();
-
-
-
-
+    $('#form_input_note_group').hide();
 
     function get_list_history(idpatient)
     {
@@ -732,19 +693,8 @@
 
             $('#idhistory').append(content);
             }
-
-
             }
-
         });
-
-
-
-
-
-
-
-
     }
 
 
@@ -842,6 +792,14 @@
         $('#txt_dis_prog').val('');
             }
         }); 
+    }
+
+    //===========GROUP NOTE==============//
+    function show_form_group_patient()
+    {
+
+
+
     }
 
 
@@ -1405,6 +1363,7 @@ var KTSelect2 = function() {
    placeholder: "Select an option"
   });
  }
+
 
  var modalDemos = function() {
   $('#kt_select2_modal').on('shown.bs.modal', function () {

@@ -30,7 +30,7 @@ var KTDatatablesBasicBasic = function() {
                         <span></span>
                     </label>`;
 			},
-
+			
 			columnDefs: [
 				{
 					targets: 0,
